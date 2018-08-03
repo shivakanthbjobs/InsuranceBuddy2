@@ -1,0 +1,17 @@
+{
+	"name": "StartIntent",
+	"auto": true,
+	"webhookUsed": true,
+	"responses": [
+		{
+			"parameters": [
+				{
+					"isList": false,
+					"name": "action",
+					"value": "$action",
+					"dataType": "@InsureAction"
+				}
+			]
+		}
+	]
+}

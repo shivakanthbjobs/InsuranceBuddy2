@@ -1,0 +1,12 @@
+{
+	"description": "",
+	"webhook": {
+		"url": "https://webhook.jovo.cloud/1fdd42ff-7057-4841-a4cf-47359835ad95",
+		"available": true
+	},
+	"language": "en",
+	"supportedLanguages": [
+		"en-in",
+		"en-us"
+	]
+}

@@ -1,0 +1,20 @@
+[
+	{
+		"value": "accident",
+		"synonyms": [
+			"accident"
+		]
+	},
+	{
+		"value": "policy",
+		"synonyms": [
+			"policy"
+		]
+	},
+	{
+		"value": "claim",
+		"synonyms": [
+			"claim"
+		]
+	}
+]

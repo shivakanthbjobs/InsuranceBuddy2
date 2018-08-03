@@ -1,0 +1,142 @@
+[
+	{
+		"data": [
+			{
+				"text": "a ",
+				"userDefined": false
+			},
+			{
+				"text": "action",
+				"userDefined": true,
+				"alias": "action",
+				"meta": "@InsureAction"
+			}
+		],
+		"isTemplate": false,
+		"count": 0
+	},
+	{
+		"data": [
+			{
+				"text": "raise a ",
+				"userDefined": false
+			},
+			{
+				"text": "action",
+				"userDefined": true,
+				"alias": "action",
+				"meta": "@InsureAction"
+			}
+		],
+		"isTemplate": false,
+		"count": 0
+	},
+	{
+		"data": [
+			{
+				"text": "i met with an ",
+				"userDefined": false
+			},
+			{
+				"text": "action",
+				"userDefined": true,
+				"alias": "action",
+				"meta": "@InsureAction"
+			}
+		],
+		"isTemplate": false,
+		"count": 0
+	},
+	{
+		"data": [
+			{
+				"text": "action",
+				"userDefined": true,
+				"alias": "action",
+				"meta": "@InsureAction"
+			}
+		],
+		"isTemplate": false,
+		"count": 0
+	},
+	{
+		"data": [
+			{
+				"text": "create ",
+				"userDefined": false
+			},
+			{
+				"text": "action",
+				"userDefined": true,
+				"alias": "action",
+				"meta": "@InsureAction"
+			}
+		],
+		"isTemplate": false,
+		"count": 0
+	},
+	{
+		"data": [
+			{
+				"text": "create a ",
+				"userDefined": false
+			},
+			{
+				"text": "action",
+				"userDefined": true,
+				"alias": "action",
+				"meta": "@InsureAction"
+			}
+		],
+		"isTemplate": false,
+		"count": 0
+	},
+	{
+		"data": [
+			{
+				"text": "get me a ",
+				"userDefined": false
+			},
+			{
+				"text": "action",
+				"userDefined": true,
+				"alias": "action",
+				"meta": "@InsureAction"
+			}
+		],
+		"isTemplate": false,
+		"count": 0
+	},
+	{
+		"data": [
+			{
+				"text": "purchase a ",
+				"userDefined": false
+			},
+			{
+				"text": "action",
+				"userDefined": true,
+				"alias": "action",
+				"meta": "@InsureAction"
+			}
+		],
+		"isTemplate": false,
+		"count": 0
+	},
+	{
+		"data": [
+			{
+				"text": "File a ",
+				"userDefined": false
+			},
+			{
+				"text": "action",
+				"userDefined": true,
+				"alias": "action",
+				"meta": "@InsureAction"
+			}
+		],
+		"isTemplate": false,
+		"count": 0
+	}
+]

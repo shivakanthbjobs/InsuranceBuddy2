@@ -1,0 +1,99 @@
+{
+	"invocation": "insurance buddy",
+	"inputTypes": [
+		{
+			"name": "InsureAction",
+			"values": [
+				{
+					"value": "accident"
+				},
+				{
+					"value": "policy"
+				},
+				{
+					"value": "claim"
+				}
+			]
+		}
+	],
+	"alexa": {
+		"interactionModel": {
+			"languageModel": {
+				"intents": [
+					{
+						"name": "AMAZON.YesIntent",
+						"samples": [
+							"Yes"
+						]
+					},
+					{
+						"name": "AMAZON.NoIntent",
+						"samples": [
+							"No"
+						]
+					},
+					{
+						"name": "AMAZON.CancelIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.HelpIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.StopIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.RepeatIntent",
+						"samples": [
+							"Repeat"
+						]
+					}
+				]
+			}
+		}
+	},
+	"intents": [
+		{
+			"name": "StartIntent",
+			"phrases": [
+				"a {action}",
+				"raise a {action}",
+				"i met with an {action}",
+				"{action}",
+				"create {action}",
+				"create a {action}",
+				"get me a {action}",
+				"purchase a {action}",
+				"File a {action}"
+			],
+			"inputs": [
+				{
+					"name": "action",
+					"type": "InsureAction"
+				}
+			]
+		}
+	],
+	"dialogflow": {
+		"intents": [
+			{
+				"name": "Default Fallback Intent",
+				"auto": true,
+				"webhookUsed": true,
+				"fallbackIntent": true
+			},
+			{
+				"name": "Default Welcome Intent",
+				"auto": true,
+				"webhookUsed": true,
+				"events": [
+					{
+						"name": "WELCOME"
+					}
+				]
+			}
+		]
+	}
+}
