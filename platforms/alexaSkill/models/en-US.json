@@ -49,6 +49,19 @@
 					]
 				},
 				{
+					"name": "FetchPolicyIntent",
+					"samples": [
+						"my policy number is {policyno}",
+						"policy number is {policyno}"
+					],
+					"slots": [
+						{
+							"name": "policyno",
+							"type": "AMAZON.NUMBER"
+						}
+					]
+				},
+				{
 					"name": "AMAZON.YesIntent",
 					"samples": [
 						"Yes"

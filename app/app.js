@@ -51,12 +51,10 @@ app.setHandler({
 
     'WelcomeIntent': function() {
         let speech = this.speechBuilder()
-        .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+      //  .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
         .addBreak('400ms').addT('welcomeMsg1')
         .addBreak('400ms').addT('welcomeMsg2')
-        .addBreak('400ms').addT('fileAClaim')
-        .addBreak('400ms').addT('orAPolicy')
-        
+       
         this
         .showImageCard(this.t('cardTitle'), this.t('claimPolicyDef'), 'https://s3-eu-west-1.amazonaws.com/insurance-buddy/icon.PNG')
         .ask(speech);
@@ -65,6 +63,7 @@ app.setHandler({
     'StartIntent': function(action) {
         let StartIntent=''
         let reprompt =  this.speechBuilder().addBreak('400ms').addT('fileAClaim').addBreak('400ms').addT('orAPolicy')
+
 
         if(action.value === this.t('claim')) {
             StartIntent = this.speechBuilder()
@@ -91,12 +90,61 @@ app.setHandler({
             .showImageCard(this.t('cardTitle'), this.t('DidYouBuyaCar'), 'https://s3-eu-west-1.amazonaws.com/insurance-buddy/CardImages/MercShowrrom.jpg')
             .ask(policyWelcomeMsg,reprompt);
         }
+
+        else if(action.value === this.t('fetchPolicy'))  {
+            let policyWelcomeMsg = this.speechBuilder()
+            .addBreak('400ms').addT('ok')
+            .addBreak('400ms').addT('GiveMePolicyNumber')
+            
+            this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg,reprompt);
+        }
         
         else {
             this.toIntent('Unhandled');
         }
     },
+
+
+    'FetchPolicyIntent': function(policyno) {
+        let StartIntent=''
+        let reprompt =  this.speechBuilder().addBreak('400ms').addT('fileAClaim').addBreak('400ms').addT('orAPolicy')
+        StartIntent = this.speechBuilder()
+        .addBreak('400ms').addT( 'You have entered ')
+        .addSayAsCharacters( policyno.value)
+
+        this
+             .showImageCard(this.t('cardTitle'), this.t('IsAnyoneInjured'), 'https://s3-eu-west-1.amazonaws.com/insurance-buddy/CardImages/claim/2.1+images.jpg')
+             .followUpState('SelectedClaimState')            
+             .ask(StartIntent, reprompt);
+
+
+        // if(action.value > 0) {
+        //     StartIntent = this.speechBuilder()
+        //      .addBreak('400ms').addT('getLocation')
+        //      .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Process1.mp3')
+        //      .addBreak('400ms') + policyNumber
+
+
+             
+        //     this
+        //     .showImageCard(this.t('cardTitle'), this.t('IsAnyoneInjured'), 'https://s3-eu-west-1.amazonaws.com/insurance-buddy/CardImages/claim/2.1+images.jpg')
+        //     .followUpState('SelectedClaimState')            
+        //     .ask(StartIntent, reprompt);
+        // }
+        
+
+
+        
+        // else {
+        //     this.toIntent('Unhandled');
+        // }
+    },
+
+
+
     
+
+    /**************************CLAIM************************ */
     'SelectedClaimState': {
         'YesIntent': function() {
             let SelectedClaimState = this.t('DoYouNeedAnAmbulance');

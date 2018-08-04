@@ -2,6 +2,14 @@
 	"manifest": {
 		"publishingInformation": {
 			"locales": {
+				"en-IN": {
+					"summary": "Sample Short Description",
+					"examplePhrases": [
+						"Alexa open hello world"
+					],
+					"name": "InsuranceBuddy2",
+					"description": "Sample Full Description"
+				},
 				"en-US": {
 					"summary": "Sample Short Description",
 					"examplePhrases": [

@@ -9,12 +9,6 @@
 						{
 							"id": null,
 							"name": {
-								"value": "accident"
-							}
-						},
-						{
-							"id": null,
-							"name": {
 								"value": "policy"
 							}
 						},
@@ -22,6 +16,18 @@
 							"id": null,
 							"name": {
 								"value": "claim"
+							}
+						},
+						{
+							"id": null,
+							"name": {
+								"value": "policydetails"
+							}
+						},
+						{
+							"id": null,
+							"name": {
+								"value": "claimdetails"
 							}
 						}
 					]
@@ -31,20 +37,27 @@
 				{
 					"name": "StartIntent",
 					"samples": [
-						"a {action}",
-						"raise a {action}",
-						"i met with an {action}",
-						"{action}",
 						"create {action}",
 						"create a {action}",
-						"get me a {action}",
-						"purchase a {action}",
-						"File a {action}"
+						"fetch {action} "
 					],
 					"slots": [
 						{
 							"name": "action",
 							"type": "InsureAction"
+						}
+					]
+				},
+				{
+					"name": "FetchPolicyIntent",
+					"samples": [
+						"my policy number is {policyno}",
+						"policy number is {policyno}"
+					],
+					"slots": [
+						{
+							"name": "policyno",
+							"type": "AMAZON.NUMBER"
 						}
 					]
 				},
