@@ -46,7 +46,7 @@ var glbClaimNo
 app.setHandler({
     
     'LAUNCH': function() {
-       // this.tell(this.t('WELCOME'');
+       // this.ask(this.t('WELCOME'');
         this.toIntent('WelcomeIntent');
     },
 
@@ -84,14 +84,14 @@ app.setHandler({
         
         else if(entity.value === this.t('policy'))  {
             
-            if (details.value === 'details' || status.value === 'existing' )  {
+            if (details.value === 'details' || status.value === 'existing' || details.value === 'summary'  )  {
                 let policyWelcomeMsg = this.speechBuilder()
                 .addBreak('400ms').addT('ok')
                 .addBreak('400ms').addT('GiveMePolicyNumber')
                 
                 this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg,reprompt);
             }
-            else if (status.value === 'new' )  {
+            else if (status.value === 'new' || status.value === null )  {
                 let policyWelcomeMsg = this.speechBuilder()
                 .addBreak('400ms').addT('ok')
                 .addBreak('400ms').addT('InMercShowroom')
@@ -117,7 +117,7 @@ app.setHandler({
         .addT( 'PolicyWelcomeP1')
         .addBreak('400ms')
         .addT( 'PolicyWelcomeP2')
-        this.tell(prompt, reprompt);
+        this.ask(prompt, reprompt);
     },
 
     'PolicySummaryIntent': function() {
@@ -127,7 +127,7 @@ app.setHandler({
         .addT( 'PolicySummary')
         .addBreak('400ms')
         .addT( 'PolicySummaryOptions')
-        this.tell(prompt, reprompt);
+        this.ask(prompt, reprompt);
     },
 
     'NextPremiumIntent': function() {
@@ -137,7 +137,7 @@ app.setHandler({
         .addT( 'NextPremium')
         .addBreak('400ms')
         .addT( 'NextPremiumOptions')
-        this.tell(prompt, reprompt);
+        this.ask(prompt, reprompt);
     },
 
     
@@ -148,7 +148,7 @@ app.setHandler({
         .addT( 'LastPremium')
         .addBreak('400ms')
         .addT( 'LastPremiumOptions')
-        this.tell(prompt, reprompt);
+        this.ask(prompt, reprompt);
     },
 
     'PremiumAmountIntent': function() {
@@ -158,7 +158,7 @@ app.setHandler({
         .addT( 'PremiumAmount')
         .addBreak('400ms')
         .addT( 'PremiumAmountOptions')
-        this.tell(prompt, reprompt);
+        this.ask(prompt, reprompt);
     },
 
     'HowManyPremiumsIntent': function(polyno) {
@@ -168,7 +168,7 @@ app.setHandler({
         .addT( 'HowManyPremiums')
         .addBreak('400ms')
         .addT( 'HowManyPremiumsOptions')
-        this.tell(prompt, reprompt);
+        this.ask(prompt, reprompt);
     },   
 
 
@@ -179,17 +179,17 @@ app.setHandler({
         .addT( 'PolicyExpiry')
         .addBreak('400ms')
         .addT( 'PolicyExpiryOptions')
-        this.tell(prompt, reprompt);
+        this.ask(prompt, reprompt);
     }, 
 
-    'NearestBranchIntent': function() {
+    'NearestBranchIntent': function(branch) {
         let prompt=''
         let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
         prompt = this.speechBuilder()
         .addT( 'NearestBranch')
         .addBreak('400ms')
         .addT( 'NearestBranchOptions')
-        this.tell(prompt, reprompt);
+        this.ask(prompt, reprompt);
     }, 
 
     'RelationshipManagerIntent': function() {
@@ -199,38 +199,36 @@ app.setHandler({
         .addT( 'RelationshipManager')
         .addBreak('400ms')
         .addT( 'RelationshipManagerOptions')
-        this.tell(prompt, reprompt);
+        this.ask(prompt, reprompt);
     }, 
 
-    'EmailPolicySummaryIntent': function() {
+    'EmailDocumentIntent': function(mail,entity,details,cert) {
         let prompt=''
         let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
-        prompt = this.speechBuilder()
-        .addT( 'EmailPolicySummary')
-        .addBreak('400ms')
-        .addT( 'EmailPolicySummaryOptions')
-        this.tell(prompt, reprompt);
-    }, 
 
+        if (entity === 'policy' && details === 'summary') {
+            prompt = this.speechBuilder()=[]
+            .addT( 'EmailPolicySummary')
+            .addBreak('400ms')
+            .addT( 'EmailPolicySummaryOptions')
+            this.ask(prompt, reprompt);
+   
+        } else if (category === 'premium' && details === 'summary') {
 
-    'EmailPremiumSummaryIntent': function() {
-        let prompt=''
-        let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
-        prompt = this.speechBuilder()
-        .addT( 'EmailPremiumSummary')
-        .addBreak('400ms')
-        .addT( 'EmailPremiumSummaryOptions')
-        this.tell(prompt, reprompt);
-    }, 
-
-    'EmailPremiumCertificateIntent': function() {
-        let prompt=''
-        let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
-        prompt = this.speechBuilder()
-        .addT( 'EmailPremiumCertificate')
-        .addBreak('400ms')
-        .addT( 'EmailPremiumCertificateOptions')
-        this.tell(prompt, reprompt);
+            prompt = this.speechBuilder()
+            .addT( 'EmailPremiumSummary')
+            .addBreak('400ms')
+            .addT( 'EmailPremiumSummaryOptions')
+            this.ask(prompt, reprompt);
+    
+        } else if (category === 'premium' && cert === 'certificate') {
+            prompt = this.speechBuilder()
+            .addT( 'EmailPremiumCertificate')
+            .addBreak('400ms')
+            .addT( 'EmailPremiumCertificateOptions')
+            this.ask(prompt, reprompt);
+        }
+        
     }, 
 
     

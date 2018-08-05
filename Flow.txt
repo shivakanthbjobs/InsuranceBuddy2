@@ -1,0 +1,11 @@
+Start Insurance Buddy
+Fetch policy details
+My policy number is 13579
+Give me my policy Summary
+What is my premium amount
+how many premiums
+When is my policy expiring
+Where is my nearest branch
+Who is my Relationship Manager
+When is my next premium due
+When did I pay my last premium

@@ -1,345 +1,406 @@
 {
-	"interactionModel": {
-		"languageModel": {
-			"invocationName": "insurance buddy",
-			"types": [
-				{
-					"name": "Entity",
-					"values": [
-						{
-							"id": null,
-							"name": {
-								"value": "policy"
-							}
-						},
-						{
-							"id": null,
-							"name": {
-								"value": "claim"
-							}
-						}
-					]
-				},
-				{
-					"name": "Details",
-					"values": [
-						{
-							"id": null,
-							"name": {
-								"value": "details"
-							}
-						}
-					]
-				},
-				{
-					"name": "Status",
-					"values": [
-						{
-							"id": null,
-							"name": {
-								"value": "existing"
-							}
-						},
-						{
-							"id": null,
-							"name": {
-								"value": "New"
-							}
-						}
-					]
-				},
-				{
-					"name": "Branch",
-					"values": [
-						{
-							"id": null,
-							"name": {
-								"value": "branch"
-							}
-						}
-					]
-				},
-				{
-					"name": "RelationshipManager",
-					"values": [
-						{
-							"id": null,
-							"name": {
-								"value": "relation ship manager",
-								"synonyms": [
-									"RM",
-									"contact person",
-									"contact",
-									"relationship Manager"
-								]
-							}
-						}
-					]
-				},
-				{
-					"name": "Mail",
-					"values": [
-						{
-							"id": null,
-							"name": {
-								"value": "e-mail"
-							}
-						},
-						{
-							"id": null,
-							"name": {
-								"value": "email"
-							}
-						},
-						{
-							"id": null,
-							"name": {
-								"value": "mail"
-							}
-						}
-					]
-				}
-			],
-			"intents": [
-				{
-					"name": "StartIntent",
-					"samples": [
-						"get {status} {details}",
-						"fetch {status} {entity} {details}",
-						"create {status} {entity}",
-						"create a {status} {entity}"
-					],
-					"slots": [
-						{
-							"name": "entity",
-							"type": "Entity"
-						},
-						{
-							"name": "details",
-							"type": "Details"
-						},
-						{
-							"name": "status",
-							"type": "Status"
-						}
-					]
-				},
-				{
-					"name": "FetchPolicyIntent",
-					"samples": [
-						"my policy number is {policyno}",
-						"policy number is {policyno}"
-					],
-					"slots": [
-						{
-							"name": "policyno",
-							"type": "AMAZON.NUMBER"
-						}
-					]
-				},
-				{
-					"name": "PolicySummaryIntent",
-					"samples": [
-						"Give me my {entity} Summary",
-						"Benefit of {entity}",
-						"{entity} description",
-						"{entity} benefits",
-						"What are my {entity} benefits ",
-						"What does the policy offer ",
-						"What are its features",
-						"What does my policy offer ",
-						"What are my policy features",
-						"What does my policy include",
-						"What does my policy cover"
-					],
-					"slots": [
-						{
-							"name": "entity",
-							"type": "Entity"
-						}
-					]
-				},
-				{
-					"name": "LastPremiumIntent",
-					"samples": [
-						"When did I pay my last premium ",
-						"Premium paid date",
-						"date of premium paid",
-						"Premium paid date of my policy",
-						"When did I pay premium",
-						"Previous premium date"
-					]
-				},
-				{
-					"name": "NextPremiumIntent",
-					"samples": [
-						"When is my next premium due",
-						"{entity} Due Date",
-						"Due Date",
-						"What is my {entity} due date",
-						"When is my due date ",
-						"my due date please",
-						"when should i pay my next premium",
-						"when is my renewal due date",
-						"When is my due",
-						"When is my next payment",
-						"When am i due"
-					],
-					"slots": [
-						{
-							"name": "entity",
-							"type": "Entity"
-						}
-					]
-				},
-				{
-					"name": "PremiumAmountIntent",
-					"samples": [
-						"What is my premium amount ",
-						"Premium Amount",
-						"What is my Policy premium amount",
-						"What is this year premium",
-						"How much did i pay this year",
-						"How much did i pay",
-						"What was my premium",
-						"Year's premium",
-						"my Premium Amount",
-						"What's my premium"
-					]
-				},
-				{
-					"name": "HowManyPremiumsIntent",
-					"samples": [
-						"How many premiums did I pay since the {entity} commencement",
-						"Count of premiums paid",
-						"number of premiums paid",
-						"total number of premiums paid",
-						"number of premiums"
-					],
-					"slots": [
-						{
-							"name": "entity",
-							"type": "Entity"
-						}
-					]
-				},
-				{
-					"name": "PolicyExpiryIntent",
-					"samples": [
-						"When is my {entity} expiring "
-					],
-					"slots": [
-						{
-							"name": "entity",
-							"type": "Entity"
-						}
-					]
-				},
-				{
-					"name": "NearestBranchIntent",
-					"samples": [
-						"Where is my nearest {branch}",
-						"{branch}",
-						"nearest {branch}",
-						"{branch} in the city",
-						"Where is the nearest {branch}"
-					],
-					"slots": [
-						{
-							"name": "branch",
-							"type": "Branch"
-						}
-					]
-				},
-				{
-					"name": "RelationshipManagerIntent",
-					"samples": [
-						"Who is my {RM} ",
-						"{RM} for Policy",
-						"{RM} from Company",
-						"I need to {RM} someone at the insurance company",
-						"Let me talk to the company whom should i talk to",
-						"Whom should i talk to for my queries",
-						"I have some clarifications"
-					],
-					"slots": [
-						{
-							"name": "RM",
-							"type": "RelationshipManager"
-						}
-					]
-				},
-				{
-					"name": "EmailPolicySummaryIntent",
-					"samples": [
-						"{mail} my {entity} Summary please"
-					],
-					"slots": [
-						{
-							"name": "entity",
-							"type": "Entity"
-						},
-						{
-							"name": "mail",
-							"type": "Mail"
-						}
-					]
-				},
-				{
-					"name": "EmailPremiumSummaryIntent",
-					"samples": [
-						"{Email} Premium Summary"
-					],
-					"slots": [
-						{
-							"name": "Email",
-							"type": "Mail"
-						}
-					]
-				},
-				{
-					"name": "EmailPremiumCertificateIntent",
-					"samples": [
-						"{mail} Premium Certificate"
-					],
-					"slots": [
-						{
-							"name": "mail",
-							"type": "Mail"
-						}
-					]
-				},
-				{
-					"name": "AMAZON.YesIntent",
-					"samples": [
-						"Yes"
-					]
-				},
-				{
-					"name": "AMAZON.NoIntent",
-					"samples": [
-						"No"
-					]
-				},
-				{
-					"name": "AMAZON.CancelIntent",
-					"samples": []
-				},
-				{
-					"name": "AMAZON.HelpIntent",
-					"samples": []
-				},
-				{
-					"name": "AMAZON.StopIntent",
-					"samples": []
-				},
-				{
-					"name": "AMAZON.RepeatIntent",
-					"samples": [
-						"Repeat"
-					]
-				}
-			]
-		}
-	}
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "insurance buddy",
+      "intents": [
+        {
+          "name": "StartIntent",
+          "slots": [
+            {
+              "name": "entity",
+              "type": "Entity"
+            },
+            {
+              "name": "details",
+              "type": "Details"
+            },
+            {
+              "name": "status",
+              "type": "Status"
+            }
+          ],
+          "samples": [
+            "get {status} {details}",
+            "fetch {status} {entity} {details}",
+            "create {status} {entity}",
+            "create a {status} {entity}"
+          ]
+        },
+        {
+          "name": "FetchPolicyIntent",
+          "slots": [
+            {
+              "name": "policyno",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "entity",
+              "type": "Entity"
+            }
+          ],
+          "samples": [
+            "my {entity} number is {policyno}",
+            "{entity} number is {policyno}"
+          ]
+        },
+        {
+          "name": "PolicySummaryIntent",
+          "slots": [
+            {
+              "name": "entity",
+              "type": "Entity"
+            },
+            {
+              "name": "details",
+              "type": "Details"
+            }
+          ],
+          "samples": [
+            "Give me my {entity} {details}",
+            "Benefit of {entity}",
+            "{entity} description",
+            "{entity} {details}",
+            "What are my {entity} {details} ",
+            "What does the policy offer ",
+            "What are its features",
+            "What does my policy offer ",
+            "What are my policy features",
+            "What does my policy include",
+            "What does my policy cover"
+          ]
+        },
+        {
+          "name": "LastPremiumIntent",
+          "slots": [
+            {
+              "name": "entity",
+              "type": "Entity"
+            },
+            {
+              "name": "cert",
+              "type": "Cert"
+            }
+          ],
+          "samples": [
+            "When did I pay my last {cert} ",
+            "{cert} paid date",
+            "date of {cert} paid",
+            "{cert} paid date of my {entity}",
+            "When did I pay {cert}",
+            "Previous premium date"
+          ]
+        },
+        {
+          "name": "NextPremiumIntent",
+          "slots": [
+            {
+              "name": "entity",
+              "type": "Entity"
+            },
+            {
+              "name": "cert",
+              "type": "Cert"
+            }
+          ],
+          "samples": [
+            "When is my next {cert} due",
+            "{cert} Due Date",
+            "Due Date",
+            "What is my {cert} due date",
+            "When is my due date ",
+            "my due date please",
+            "when should i pay my next premium",
+            "when is my renewal due date",
+            "When is my due",
+            "When is my next payment",
+            "When am i due"
+          ]
+        },
+        {
+          "name": "PremiumAmountIntent",
+          "slots": [
+            {
+              "name": "entity",
+              "type": "Entity"
+            },
+            {
+              "name": "cert",
+              "type": "Cert"
+            }
+          ],
+          "samples": [
+            "What is my {cert} amount ",
+            "{cert} Amount",
+            "What is my {entity} {cert} amount",
+            "What is this year {cert}",
+            "How much did i pay this year",
+            "How much did i pay",
+            "What was my premium",
+            "Year's premium",
+            "my Premium Amount",
+            "What's my premium"
+          ]
+        },
+        {
+          "name": "HowManyPremiumsIntent",
+          "slots": [
+            {
+              "name": "entity",
+              "type": "Entity"
+            },
+            {
+              "name": "category",
+              "type": "Category"
+            }
+          ],
+          "samples": [
+            "How many premiums did I pay since the {entity} commencement",
+            "Count of {category} paid",
+            "number of {category} paid",
+            "total number of {category} paid",
+            "number of {category}"
+          ]
+        },
+        {
+          "name": "PolicyExpiryIntent",
+          "slots": [
+            {
+              "name": "entity",
+              "type": "Entity"
+            }
+          ],
+          "samples": [
+            "When is my {entity} expiry",
+            "{entity} expiry",
+            "When is my {entity} expiring "
+          ]
+        },
+        {
+          "name": "NearestBranchIntent",
+          "slots": [
+            {
+              "name": "branch",
+              "type": "Branch"
+            }
+          ],
+          "samples": [
+            "Where is my nearest {branch}",
+            "{branch}",
+            "nearest {branch}",
+            "{branch} in the city",
+            "Where is the nearest {branch}"
+          ]
+        },
+        {
+          "name": "RelationshipManagerIntent",
+          "slots": [
+            {
+              "name": "RM",
+              "type": "RelationshipManager"
+            },
+            {
+              "name": "entity",
+              "type": "Entity"
+            }
+          ],
+          "samples": [
+            "Who is my {RM} ",
+            "{RM} for {entity}",
+            "{RM} from Company",
+            "I need to {RM} someone at the insurance company",
+            "Let me talk to the company whom should i talk to",
+            "Whom should i talk to for my queries",
+            "I have some clarifications"
+          ]
+        },
+        {
+          "name": "EmailDocumentIntent",
+          "slots": [
+            {
+              "name": "entity",
+              "type": "Entity"
+            },
+            {
+              "name": "mail",
+              "type": "Mail"
+            },
+            {
+              "name": "details",
+              "type": "Details"
+            },
+            {
+              "name": "cert",
+              "type": "Cert"
+            },
+            {
+              "name": "category",
+              "type": "Category"
+            }
+          ],
+          "samples": [
+            "{mail} my {category} {cert} please",
+            "{mail} {category} {cert}",
+            "{mail} {entity} {details}",
+            "{mail} my {entity} {details} please"
+          ]
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": [
+            "Yes"
+          ]
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": [
+            "No"
+          ]
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.RepeatIntent",
+          "samples": [
+            "Repeat"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "policy"
+              }
+            },
+            {
+              "name": {
+                "value": "claim"
+              }
+            }
+          ],
+          "name": "Entity"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "benefits"
+              }
+            },
+            {
+              "name": {
+                "value": "summary"
+              }
+            },
+            {
+              "name": {
+                "value": "details"
+              }
+            }
+          ],
+          "name": "Details"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "existing"
+              }
+            },
+            {
+              "name": {
+                "value": "New"
+              }
+            }
+          ],
+          "name": "Status"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "branch"
+              }
+            }
+          ],
+          "name": "Branch"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "relation ship manager",
+                "synonyms": [
+                  "RM",
+                  "contact person",
+                  "contact",
+                  "relationship Manager"
+                ]
+              }
+            }
+          ],
+          "name": "RelationshipManager"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "e-mail"
+              }
+            },
+            {
+              "name": {
+                "value": "email"
+              }
+            },
+            {
+              "name": {
+                "value": "mail"
+              }
+            }
+          ],
+          "name": "Mail"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "certificate",
+                "synonyms": [
+                  "cert"
+                ]
+              }
+            }
+          ],
+          "name": "Cert"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "premiums"
+              }
+            },
+            {
+              "name": {
+                "value": "premium"
+              }
+            }
+          ],
+          "name": "Category"
+        }
+      ]
+    }
+  }
 }

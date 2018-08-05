@@ -16,6 +16,12 @@
 			"name": "Details",
 			"values": [
 				{
+					"value": "benefits"
+				},
+				{
+					"value": "summary"
+				},
+				{
 					"value": "details"
 				}
 			]
@@ -64,6 +70,28 @@
 				},
 				{
 					"value": "mail"
+				}
+			]
+		},
+		{
+			"name": "Cert",
+			"values": [
+				{
+					"value": "certificate",
+					"synonyms": [
+						"cert"
+					]
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"values": [
+				{
+					"value": "premiums"
+				},
+				{
+					"value": "premium"
 				}
 			]
 		}
@@ -133,8 +161,8 @@
 		{
 			"name": "FetchPolicyIntent",
 			"phrases": [
-				"my policy number is {policyno}",
-				"policy number is {policyno}"
+				"my {entity} number is {policyno}",
+				"{entity} number is {policyno}"
 			],
 			"inputs": [
 				{
@@ -142,17 +170,21 @@
 					"type": {
 						"alexa": "AMAZON.NUMBER"
 					}
+				},
+				{
+					"name": "entity",
+					"type": "Entity"
 				}
 			]
 		},
 		{
 			"name": "PolicySummaryIntent",
 			"phrases": [
-				"Give me my {entity} Summary",
+				"Give me my {entity} {details}",
 				"Benefit of {entity}",
 				"{entity} description",
-				"{entity} benefits",
-				"What are my {entity} benefits ",
+				"{entity} {details}",
+				"What are my {entity} {details} ",
 				"What does the policy offer ",
 				"What are its features",
 				"What does my policy offer ",
@@ -164,27 +196,41 @@
 				{
 					"name": "entity",
 					"type": "Entity"
+				},
+				{
+					"name": "details",
+					"type": "Details"
 				}
 			]
 		},
 		{
 			"name": "LastPremiumIntent",
 			"phrases": [
-				"When did I pay my last premium ",
-				"Premium paid date",
-				"date of premium paid",
-				"Premium paid date of my policy",
-				"When did I pay premium",
+				"When did I pay my last {cert} ",
+				"{cert} paid date",
+				"date of {cert} paid",
+				"{cert} paid date of my {entity}",
+				"When did I pay {cert}",
 				"Previous premium date"
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				},
+				{
+					"name": "cert",
+					"type": "Cert"
+				}
 			]
 		},
 		{
 			"name": "NextPremiumIntent",
 			"phrases": [
-				"When is my next premium due",
-				"{entity} Due Date",
+				"When is my next {cert} due",
+				"{cert} Due Date",
 				"Due Date",
-				"What is my {entity} due date",
+				"What is my {cert} due date",
 				"When is my due date ",
 				"my due date please",
 				"when should i pay my next premium",
@@ -197,43 +243,63 @@
 				{
 					"name": "entity",
 					"type": "Entity"
+				},
+				{
+					"name": "cert",
+					"type": "Cert"
 				}
 			]
 		},
 		{
 			"name": "PremiumAmountIntent",
 			"phrases": [
-				"What is my premium amount ",
-				"Premium Amount",
-				"What is my Policy premium amount",
-				"What is this year premium",
+				"What is my {cert} amount ",
+				"{cert} Amount",
+				"What is my {entity} {cert} amount",
+				"What is this year {cert}",
 				"How much did i pay this year",
 				"How much did i pay",
 				"What was my premium",
 				"Year's premium",
 				"my Premium Amount",
 				"What's my premium"
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				},
+				{
+					"name": "cert",
+					"type": "Cert"
+				}
 			]
 		},
 		{
 			"name": "HowManyPremiumsIntent",
 			"phrases": [
 				"How many premiums did I pay since the {entity} commencement",
-				"Count of premiums paid",
-				"number of premiums paid",
-				"total number of premiums paid",
-				"number of premiums"
+				"Count of {category} paid",
+				"number of {category} paid",
+				"total number of {category} paid",
+				"number of {category}"
 			],
 			"inputs": [
 				{
 					"name": "entity",
 					"type": "Entity"
+				},
+				{
+					"name": "category",
+					"type": "Category"
 				}
 			]
 		},
 		{
 			"name": "PolicyExpiryIntent",
 			"phrases": [
+				"When is my {entity} expiry",
+				"{entity} expiry",
 				"When is my {entity} expiring "
 			],
 			"inputs": [
@@ -251,7 +317,6 @@
 				"nearest {branch}",
 				"{branch} in the city",
 				"Where is the nearest {branch}"
-
 			],
 			"inputs": [
 				{
@@ -264,7 +329,7 @@
 			"name": "RelationshipManagerIntent",
 			"phrases": [
 				"Who is my {RM} ",
-				"{RM} for Policy",
+				"{RM} for {entity}",
 				"{RM} from Company",
 				"I need to {RM} someone at the insurance company",
 				"Let me talk to the company whom should i talk to",
@@ -275,13 +340,20 @@
 				{
 					"name": "RM",
 					"type": "RelationshipManager"
+				},
+				{
+					"name": "entity",
+					"type": "Entity"
 				}
 			]
 		},
 		{
-			"name": "EmailPolicySummaryIntent",
+			"name": "EmailDocumentIntent",
 			"phrases": [
-				"{mail} my {entity} Summary please"
+				"{mail} my {category} {cert} please",
+				"{mail} {category} {cert}",
+				"{mail} {entity} {details}",
+				"{mail} my {entity} {details} please"
 			],
 			"inputs": [
 				{
@@ -291,30 +363,18 @@
 				{
 					"name": "mail",
 					"type": "Mail"
-				}
-			]
-		},
-		{
-			"name": "EmailPremiumSummaryIntent",
-			"phrases": [
-				"{Email} Premium Summary"
-			],
-			"inputs": [
+				},
 				{
-					"name": "Email",
-					"type": "Mail"
-				}
-			]
-		},
-		{
-			"name": "EmailPremiumCertificateIntent",
-			"phrases": [
-				"{mail} Premium Certificate"
-			],
-			"inputs": [
+					"name": "details",
+					"type": "Details"
+				},
 				{
-					"name": "mail",
-					"type": "Mail"
+					"name": "cert",
+					"type": "Cert"
+				},
+				{
+					"name": "category",
+					"type": "Category"
 				}
 			]
 		}

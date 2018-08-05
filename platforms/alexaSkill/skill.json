@@ -1,38 +1,38 @@
 {
-	"manifest": {
-		"publishingInformation": {
-			"locales": {
-				"en-US": {
-					"summary": "Sample Short Description",
-					"examplePhrases": [
-						"Alexa open hello world"
-					],
-					"name": "InsuranceBuddy2",
-					"description": "Sample Full Description"
-				},
-				"en-IN": {
-					"summary": "Sample Short Description",
-					"examplePhrases": [
-						"Alexa open hello world"
-					],
-					"name": "InsuranceBuddy2",
-					"description": "Sample Full Description"
-				}
-			},
-			"isAvailableWorldwide": true,
-			"testingInstructions": "Sample Testing Instructions.",
-			"category": "EDUCATION_AND_REFERENCE",
-			"distributionCountries": []
-		},
-		"apis": {
-			"custom": {
-				"endpoint": {
-					"sslCertificateType": "Wildcard",
-					"uri": "https://webhook.jovo.cloud/1fdd42ff-7057-4841-a4cf-47359835ad95"
-				},
-				"interfaces": []
-			}
-		},
-		"manifestVersion": "1.0"
-	}
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "Sample Short Description",
+          "examplePhrases": [
+            "Alexa open hello world"
+          ],
+          "name": "InsuranceBuddy2",
+          "description": "Sample Full Description"
+        },
+        "en-IN": {
+          "summary": "Sample Short Description",
+          "examplePhrases": [
+            "Alexa open hello world"
+          ],
+          "name": "InsuranceBuddy2",
+          "description": "Sample Full Description"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Sample Testing Instructions.",
+      "category": "EDUCATION_AND_REFERENCE",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sslCertificateType": "Wildcard",
+          "uri": "https://webhook.jovo.cloud/1fdd42ff-7057-4841-a4cf-47359835ad95"
+        },
+        "interfaces": []
+      }
+    },
+    "manifestVersion": "1.0"
+  }
 }

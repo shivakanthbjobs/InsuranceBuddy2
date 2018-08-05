@@ -11,7 +11,7 @@
     "fetchPolicy" : "policydetails",
     "PolicyWelcomeP1" : "I can see that you have a policy with CG Life Company ",
     "PolicyWelcomeP2" :"What details can I fetch regarding your policy ? Say HELP  to listen to all the Policy options ",    
-    "PolicySummary" :"You have an endowment plan from CG Life Company that covers you and your spouse. This plan gives you coverage for death and also covers any terminal illness. KIndly note that there is an exclusion for pre-exisitng heart disease.",
+    "PolicySummary" :"You have an endowment plan that covers you and your spouse. This plan gives you coverage for death and also covers any terminal illness. KIndly note that there is an exclusion for pre-exisitng heart disease.",
     "PolicySummaryOptions":"I can also tell your about your Policy  start date ,  expiry  date or the premium details.",
     "NextPremium": "Your next premium due date is on 27th December 2019   with Amount of 2700 Dollars .",
     "NextPremiumOptions" : "Do you need any additional details on the premium?",
