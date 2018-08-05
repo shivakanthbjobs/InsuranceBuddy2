@@ -75,8 +75,8 @@
 				}
 			]
 		},
-		{  
-            "name":"FetchPolicyIntent",
+		{
+			"name": "FetchPolicyIntent",
 			"phrases": [
 				"my policy number is {policyno}",
 				"policy number is {policyno}"
@@ -85,33 +85,10 @@
 				{
 					"name": "policyno",
 					"type": {
-						"alexa": "AMAZON.NUMBER",
-						"dialogflow": "@sys.any"
+						"alexa": "AMAZON.NUMBER"
 					}
 				}
 			]
-        }
-
-		
-	],
-	"dialogflow": {
-		"intents": [
-			{
-				"name": "Default Fallback Intent",
-				"auto": true,
-				"webhookUsed": true,
-				"fallbackIntent": true
-			},
-			{
-				"name": "Default Welcome Intent",
-				"auto": true,
-				"webhookUsed": true,
-				"events": [
-					{
-						"name": "WELCOME"
-					}
-				]
-			}
-		]
-	}
+		}
+	]
 }

@@ -2,21 +2,69 @@
 	"invocation": "insurance buddy",
 	"inputTypes": [
 		{
-			"name": "InsureAction",
+			"name": "Entity",
 			"values": [
 				{
 					"value": "policy"
 				},
 				{
 					"value": "claim"
-				},
-				{
-					"value": "policydetails"
-				},
-				{
-					"value": "claimdetails"
 				}
-				
+			]
+		},
+		{
+			"name": "Details",
+			"values": [
+				{
+					"value": "details"
+				}
+			]
+		},
+		{
+			"name": "Status",
+			"values": [
+				{
+					"value": "existing"
+				},
+				{
+					"value": "New"
+				}
+			]
+		},
+		{
+			"name": "Branch",
+			"values": [
+				{
+					"value": "branch"
+				}
+			]
+		},
+		{
+			"name": "RelationshipManager",
+			"values": [
+				{
+					"value": "relation ship manager",
+					"synonyms": [
+						"RM",
+						"contact person",
+						"contact",
+						"relationship Manager"
+					]
+				}
+			]
+		},
+		{
+			"name": "Mail",
+			"values": [
+				{
+					"value": "e-mail"
+				},
+				{
+					"value": "email"
+				},
+				{
+					"value": "mail"
+				}
 			]
 		}
 	],
@@ -62,20 +110,28 @@
 		{
 			"name": "StartIntent",
 			"phrases": [
-				"create {action}",
-				"create a {action}",
-				"fetch {action} "
+				"get {status} {details}",
+				"fetch {status} {entity} {details}",
+				"create {status} {entity}",
+				"create a {status} {entity}"
 			],
 			"inputs": [
 				{
-					"name": "action",
-					"type": "InsureAction"
+					"name": "entity",
+					"type": "Entity"
+				},
+				{
+					"name": "details",
+					"type": "Details"
+				},
+				{
+					"name": "status",
+					"type": "Status"
 				}
 			]
 		},
-
-		{  
-            "name":"FetchPolicyIntent",
+		{
+			"name": "FetchPolicyIntent",
 			"phrases": [
 				"my policy number is {policyno}",
 				"policy number is {policyno}"
@@ -84,32 +140,183 @@
 				{
 					"name": "policyno",
 					"type": {
-						"alexa": "AMAZON.NUMBER",
-						"dialogflow": "@sys.any"
+						"alexa": "AMAZON.NUMBER"
 					}
 				}
 			]
-        }
+		},
+		{
+			"name": "PolicySummaryIntent",
+			"phrases": [
+				"Give me my {entity} Summary",
+				"Benefit of {entity}",
+				"{entity} description",
+				"{entity} benefits",
+				"What are my {entity} benefits ",
+				"What does the policy offer ",
+				"What are its features",
+				"What does my policy offer ",
+				"What are my policy features",
+				"What does my policy include",
+				"What does my policy cover"
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},
+		{
+			"name": "LastPremiumIntent",
+			"phrases": [
+				"When did I pay my last premium ",
+				"Premium paid date",
+				"date of premium paid",
+				"Premium paid date of my policy",
+				"When did I pay premium",
+				"Previous premium date"
+			]
+		},
+		{
+			"name": "NextPremiumIntent",
+			"phrases": [
+				"When is my next premium due",
+				"{entity} Due Date",
+				"Due Date",
+				"What is my {entity} due date",
+				"When is my due date ",
+				"my due date please",
+				"when should i pay my next premium",
+				"when is my renewal due date",
+				"When is my due",
+				"When is my next payment",
+				"When am i due"
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},
+		{
+			"name": "PremiumAmountIntent",
+			"phrases": [
+				"What is my premium amount ",
+				"Premium Amount",
+				"What is my Policy premium amount",
+				"What is this year premium",
+				"How much did i pay this year",
+				"How much did i pay",
+				"What was my premium",
+				"Year's premium",
+				"my Premium Amount",
+				"What's my premium"
+			]
+		},
+		{
+			"name": "HowManyPremiumsIntent",
+			"phrases": [
+				"How many premiums did I pay since the {entity} commencement",
+				"Count of premiums paid",
+				"number of premiums paid",
+				"total number of premiums paid",
+				"number of premiums"
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},
+		{
+			"name": "PolicyExpiryIntent",
+			"phrases": [
+				"When is my {entity} expiring "
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},
+		{
+			"name": "NearestBranchIntent",
+			"phrases": [
+				"Where is my nearest {branch}",
+				"{branch}",
+				"nearest {branch}",
+				"{branch} in the city",
+				"Where is the nearest {branch}"
 
-	],
-	"dialogflow": {
-		"intents": [
-			{
-				"name": "Default Fallback Intent",
-				"auto": true,
-				"webhookUsed": true,
-				"fallbackIntent": true
-			},
-			{
-				"name": "Default Welcome Intent",
-				"auto": true,
-				"webhookUsed": true,
-				"events": [
-					{
-						"name": "WELCOME"
-					}
-				]
-			}
-		]
-	}
+			],
+			"inputs": [
+				{
+					"name": "branch",
+					"type": "Branch"
+				}
+			]
+		},
+		{
+			"name": "RelationshipManagerIntent",
+			"phrases": [
+				"Who is my {RM} ",
+				"{RM} for Policy",
+				"{RM} from Company",
+				"I need to {RM} someone at the insurance company",
+				"Let me talk to the company whom should i talk to",
+				"Whom should i talk to for my queries",
+				"I have some clarifications"
+			],
+			"inputs": [
+				{
+					"name": "RM",
+					"type": "RelationshipManager"
+				}
+			]
+		},
+		{
+			"name": "EmailPolicySummaryIntent",
+			"phrases": [
+				"{mail} my {entity} Summary please"
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				},
+				{
+					"name": "mail",
+					"type": "Mail"
+				}
+			]
+		},
+		{
+			"name": "EmailPremiumSummaryIntent",
+			"phrases": [
+				"{Email} Premium Summary"
+			],
+			"inputs": [
+				{
+					"name": "Email",
+					"type": "Mail"
+				}
+			]
+		},
+		{
+			"name": "EmailPremiumCertificateIntent",
+			"phrases": [
+				"{mail} Premium Certificate"
+			],
+			"inputs": [
+				{
+					"name": "mail",
+					"type": "Mail"
+				}
+			]
+		}
+	]
 }

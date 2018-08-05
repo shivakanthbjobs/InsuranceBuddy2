@@ -18,7 +18,6 @@ let languageResources = {
 }
 
 
-
 const config = {
     logging: true,
     intentMap: {
@@ -35,6 +34,8 @@ const config = {
 const app = new App(config);
 app.setLanguageResources(languageResources);
 var  myPremium = 1400
+var glbPolicyNo 
+var glbClaimNo
 
 
 
@@ -50,6 +51,8 @@ app.setHandler({
     },
 
     'WelcomeIntent': function() {
+        glbPolicyNo=null
+        glbClaimNo =null
         let speech = this.speechBuilder()
       //  .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
         .addBreak('400ms').addT('welcomeMsg1')
@@ -60,12 +63,12 @@ app.setHandler({
         .ask(speech);
     },  
     
-    'StartIntent': function(action) {
+    'StartIntent': function(entity, details,status) {
         let StartIntent=''
         let reprompt =  this.speechBuilder().addBreak('400ms').addT('fileAClaim').addBreak('400ms').addT('orAPolicy')
 
 
-        if(action.value === this.t('claim')) {
+        if(entity.value === this.t('claim')) {
             StartIntent = this.speechBuilder()
              .addBreak('400ms').addT('getLocation')
              .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Process1.mp3')
@@ -79,72 +82,160 @@ app.setHandler({
             .ask(StartIntent, reprompt);
         }
         
-        else if(action.value === this.t('policy'))  {
-            let policyWelcomeMsg = this.speechBuilder()
-            .addBreak('400ms').addT('ok')
-            .addBreak('400ms').addT('InMercShowroom')
-            .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Process1.mp3')
-            .addBreak('400ms').addT('DidYouBuyaCar')
+        else if(entity.value === this.t('policy'))  {
             
-            this.followUpState('BuyAPolicy')
-            .showImageCard(this.t('cardTitle'), this.t('DidYouBuyaCar'), 'https://s3-eu-west-1.amazonaws.com/insurance-buddy/CardImages/MercShowrrom.jpg')
-            .ask(policyWelcomeMsg,reprompt);
-        }
-
-        else if(action.value === this.t('fetchPolicy'))  {
-            let policyWelcomeMsg = this.speechBuilder()
-            .addBreak('400ms').addT('ok')
-            .addBreak('400ms').addT('GiveMePolicyNumber')
-            
-            this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg,reprompt);
+            if (details.value === 'details' || status.value === 'existing' )  {
+                let policyWelcomeMsg = this.speechBuilder()
+                .addBreak('400ms').addT('ok')
+                .addBreak('400ms').addT('GiveMePolicyNumber')
+                
+                this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg,reprompt);
+            }
+            else if (status.value === 'new' )  {
+                let policyWelcomeMsg = this.speechBuilder()
+                .addBreak('400ms').addT('ok')
+                .addBreak('400ms').addT('InMercShowroom')
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Process1.mp3')
+                .addBreak('400ms').addT('DidYouBuyaCar')
+                
+                this.followUpState('BuyAPolicy')
+                .showImageCard(this.t('cardTitle'), this.t('DidYouBuyaCar'), 'https://s3-eu-west-1.amazonaws.com/insurance-buddy/CardImages/MercShowrrom.jpg')
+                .ask(policyWelcomeMsg,reprompt);
+    
+            }
         }
         
-        else {
-            this.toIntent('Unhandled');
-        }
+ 
     },
 
 
     'FetchPolicyIntent': function(policyno) {
-        let StartIntent=''
-        let reprompt =  this.speechBuilder().addBreak('400ms').addT('fileAClaim').addBreak('400ms').addT('orAPolicy')
-        StartIntent = this.speechBuilder()
-        .addBreak('400ms').addT( 'You have entered ')
-        .addSayAsCharacters( policyno.value)
-
-        this
-             .showImageCard(this.t('cardTitle'), this.t('IsAnyoneInjured'), 'https://s3-eu-west-1.amazonaws.com/insurance-buddy/CardImages/claim/2.1+images.jpg')
-             .followUpState('SelectedClaimState')            
-             .ask(StartIntent, reprompt);
-
-
-        // if(action.value > 0) {
-        //     StartIntent = this.speechBuilder()
-        //      .addBreak('400ms').addT('getLocation')
-        //      .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Process1.mp3')
-        //      .addBreak('400ms') + policyNumber
-
-
-             
-        //     this
-        //     .showImageCard(this.t('cardTitle'), this.t('IsAnyoneInjured'), 'https://s3-eu-west-1.amazonaws.com/insurance-buddy/CardImages/claim/2.1+images.jpg')
-        //     .followUpState('SelectedClaimState')            
-        //     .ask(StartIntent, reprompt);
-        // }
-        
-
-
-        
-        // else {
-        //     this.toIntent('Unhandled');
-        // }
+        let prompt=''
+        glbPolicyNo = policyno
+        let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        prompt = this.speechBuilder()
+        .addT( 'PolicyWelcomeP1')
+        .addBreak('400ms')
+        .addT( 'PolicyWelcomeP2')
+        this.tell(prompt, reprompt);
     },
 
+    'PolicySummaryIntent': function() {
+        let prompt=''
+        let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        prompt = this.speechBuilder()
+        .addT( 'PolicySummary')
+        .addBreak('400ms')
+        .addT( 'PolicySummaryOptions')
+        this.tell(prompt, reprompt);
+    },
 
+    'NextPremiumIntent': function() {
+        let prompt=''
+        let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        prompt = this.speechBuilder()
+        .addT( 'NextPremium')
+        .addBreak('400ms')
+        .addT( 'NextPremiumOptions')
+        this.tell(prompt, reprompt);
+    },
+
+    
+    'LastPremiumIntent': function() {
+        let prompt=''
+        let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        prompt = this.speechBuilder()
+        .addT( 'LastPremium')
+        .addBreak('400ms')
+        .addT( 'LastPremiumOptions')
+        this.tell(prompt, reprompt);
+    },
+
+    'PremiumAmountIntent': function() {
+        let prompt=''
+        let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        prompt = this.speechBuilder()
+        .addT( 'PremiumAmount')
+        .addBreak('400ms')
+        .addT( 'PremiumAmountOptions')
+        this.tell(prompt, reprompt);
+    },
+
+    'HowManyPremiumsIntent': function(polyno) {
+        let prompt=''
+        let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        prompt = this.speechBuilder()
+        .addT( 'HowManyPremiums')
+        .addBreak('400ms')
+        .addT( 'HowManyPremiumsOptions')
+        this.tell(prompt, reprompt);
+    },   
+
+
+    'PolicyExpiryIntent': function() {
+        let prompt=''
+        let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        prompt = this.speechBuilder()
+        .addT( 'PolicyExpiry')
+        .addBreak('400ms')
+        .addT( 'PolicyExpiryOptions')
+        this.tell(prompt, reprompt);
+    }, 
+
+    'NearestBranchIntent': function() {
+        let prompt=''
+        let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        prompt = this.speechBuilder()
+        .addT( 'NearestBranch')
+        .addBreak('400ms')
+        .addT( 'NearestBranchOptions')
+        this.tell(prompt, reprompt);
+    }, 
+
+    'RelationshipManagerIntent': function() {
+        let prompt=''
+        let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        prompt = this.speechBuilder()
+        .addT( 'RelationshipManager')
+        .addBreak('400ms')
+        .addT( 'RelationshipManagerOptions')
+        this.tell(prompt, reprompt);
+    }, 
+
+    'EmailPolicySummaryIntent': function() {
+        let prompt=''
+        let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        prompt = this.speechBuilder()
+        .addT( 'EmailPolicySummary')
+        .addBreak('400ms')
+        .addT( 'EmailPolicySummaryOptions')
+        this.tell(prompt, reprompt);
+    }, 
+
+
+    'EmailPremiumSummaryIntent': function() {
+        let prompt=''
+        let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        prompt = this.speechBuilder()
+        .addT( 'EmailPremiumSummary')
+        .addBreak('400ms')
+        .addT( 'EmailPremiumSummaryOptions')
+        this.tell(prompt, reprompt);
+    }, 
+
+    'EmailPremiumCertificateIntent': function() {
+        let prompt=''
+        let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        prompt = this.speechBuilder()
+        .addT( 'EmailPremiumCertificate')
+        .addBreak('400ms')
+        .addT( 'EmailPremiumCertificateOptions')
+        this.tell(prompt, reprompt);
+    }, 
 
     
 
-    /**************************CLAIM************************ */
+    /**************************CREATE CLAIM************************ */
     'SelectedClaimState': {
         'YesIntent': function() {
             let SelectedClaimState = this.t('DoYouNeedAnAmbulance');
@@ -333,7 +424,7 @@ app.setHandler({
         this.ask(speech);
     },
 
-    /*****************Policy */
+    /*****************CREATE Policy***************************** */
 
 
     'BuyAPolicy': {
