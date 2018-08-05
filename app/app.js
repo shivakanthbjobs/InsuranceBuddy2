@@ -34,8 +34,8 @@ const config = {
 const app = new App(config);
 app.setLanguageResources(languageResources);
 var  myPremium = 1400
-var glbPolicyNo 
-var glbClaimNo
+var glbPolicyNo = null
+var glbClaimNo= null
 
 
 
@@ -46,7 +46,8 @@ var glbClaimNo
 app.setHandler({
     
     'LAUNCH': function() {
-       // this.ask(this.t('WELCOME'');
+        glbPolicyNo=null
+        glbClaimNo =null
         this.toIntent('WelcomeIntent');
     },
 
@@ -54,7 +55,7 @@ app.setHandler({
         glbPolicyNo=null
         glbClaimNo =null
         let speech = this.speechBuilder()
-      //  .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+        .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
         .addBreak('400ms').addT('welcomeMsg1')
         .addBreak('400ms').addT('welcomeMsg2')
        
@@ -65,7 +66,7 @@ app.setHandler({
     
     'StartIntent': function(entity, details,status) {
         let StartIntent=''
-        let reprompt =  this.speechBuilder().addBreak('400ms').addT('fileAClaim').addBreak('400ms').addT('orAPolicy')
+        let reprompt =  this.speechBuilder().addBreak('400ms').addT('welcomeMsg2')
 
 
         if(entity.value === this.t('claim')) {
@@ -81,14 +82,10 @@ app.setHandler({
             .followUpState('SelectedClaimState')            
             .ask(StartIntent, reprompt);
         }
-        
         else if(entity.value === this.t('policy'))  {
             
             if (details.value === 'details' || status.value === 'existing' || details.value === 'summary'  )  {
-                let policyWelcomeMsg = this.speechBuilder()
-                .addBreak('400ms').addT('ok')
-                .addBreak('400ms').addT('GiveMePolicyNumber')
-                
+                let policyWelcomeMsg = this.speechBuilder().addBreak('400ms').addT('ok').addBreak('400ms').addT('GiveMePolicyNumber')
                 this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg,reprompt);
             }
             else if (status.value === 'new' || status.value === null )  {
@@ -104,10 +101,12 @@ app.setHandler({
     
             }
         }
+        else {
+            this.toIntent('Unhandled');
+        }
         
  
     },
-
 
     'FetchPolicyIntent': function(policyno) {
         let prompt=''
@@ -123,88 +122,156 @@ app.setHandler({
     'PolicySummaryIntent': function() {
         let prompt=''
         let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        if(glbPolicyNo ==null) {
+            let policyWelcomeMsg = this.speechBuilder().addBreak('400ms').addT('ok').addBreak('400ms').addT('GiveMePolicyNumber')
+            this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg,reprompt);
+
+        }        
+        else  {
         prompt = this.speechBuilder()
         .addT( 'PolicySummary')
         .addBreak('400ms')
         .addT( 'PolicySummaryOptions')
         this.ask(prompt, reprompt);
+        } 
     },
 
     'NextPremiumIntent': function() {
         let prompt=''
         let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        if(glbPolicyNo ==null) {
+            let policyWelcomeMsg = this.speechBuilder().addBreak('400ms').addT('ok').addBreak('400ms').addT('GiveMePolicyNumber')
+            this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg,reprompt);
+        }        
+        else  {
         prompt = this.speechBuilder()
         .addT( 'NextPremium')
         .addBreak('400ms')
         .addT( 'NextPremiumOptions')
         this.ask(prompt, reprompt);
+        }
     },
 
     
     'LastPremiumIntent': function() {
         let prompt=''
         let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+
+        if(glbPolicyNo ==null) {
+            let policyWelcomeMsg = this.speechBuilder().addBreak('400ms').addT('ok').addBreak('400ms').addT('GiveMePolicyNumber')
+            this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg,reprompt);
+
+        }        
+        else  {
         prompt = this.speechBuilder()
         .addT( 'LastPremium')
         .addBreak('400ms')
         .addT( 'LastPremiumOptions')
         this.ask(prompt, reprompt);
+        }
     },
 
     'PremiumAmountIntent': function() {
         let prompt=''
         let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        if(glbPolicyNo ==null) {
+            let policyWelcomeMsg = this.speechBuilder().addBreak('400ms').addT('ok').addBreak('400ms').addT('GiveMePolicyNumber')
+            this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg,reprompt);
+
+        }        
+        else  {
+
         prompt = this.speechBuilder()
         .addT( 'PremiumAmount')
         .addBreak('400ms')
         .addT( 'PremiumAmountOptions')
         this.ask(prompt, reprompt);
+        }
     },
 
     'HowManyPremiumsIntent': function(polyno) {
         let prompt=''
         let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+
+        if(glbPolicyNo ==null) {
+            let policyWelcomeMsg = this.speechBuilder().addBreak('400ms').addT('ok').addBreak('400ms').addT('GiveMePolicyNumber')
+            this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg,reprompt);
+
+        }        
+        else  {
+
         prompt = this.speechBuilder()
         .addT( 'HowManyPremiums')
         .addBreak('400ms')
         .addT( 'HowManyPremiumsOptions')
         this.ask(prompt, reprompt);
+        }
     },   
 
 
     'PolicyExpiryIntent': function() {
         let prompt=''
         let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        if(glbPolicyNo ==null) {
+            let policyWelcomeMsg = this.speechBuilder().addBreak('400ms').addT('ok').addBreak('400ms').addT('GiveMePolicyNumber')
+            this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg,reprompt);
+
+        }        
+        else  {
+
         prompt = this.speechBuilder()
         .addT( 'PolicyExpiry')
         .addBreak('400ms')
         .addT( 'PolicyExpiryOptions')
         this.ask(prompt, reprompt);
+        }
     }, 
 
     'NearestBranchIntent': function(branch) {
         let prompt=''
         let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        if(glbPolicyNo ==null) {
+            let policyWelcomeMsg = this.speechBuilder().addBreak('400ms').addT('ok').addBreak('400ms').addT('GiveMePolicyNumber')
+            this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg,reprompt);
+
+        }        
+        else  {
+        
         prompt = this.speechBuilder()
         .addT( 'NearestBranch')
         .addBreak('400ms')
         .addT( 'NearestBranchOptions')
         this.ask(prompt, reprompt);
+        }
     }, 
 
     'RelationshipManagerIntent': function() {
         let prompt=''
         let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        if(glbPolicyNo ==null) {
+            let policyWelcomeMsg = this.speechBuilder().addBreak('400ms').addT('ok').addBreak('400ms').addT('GiveMePolicyNumber')
+            this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg,reprompt);
+
+        }        
+        else  {
+        
         prompt = this.speechBuilder()
         .addT( 'RelationshipManager')
         .addBreak('400ms')
         .addT( 'RelationshipManagerOptions')
         this.ask(prompt, reprompt);
+        }
     }, 
 
     'EmailDocumentIntent': function(mail,entity,details,cert) {
         let prompt=''
         let reprompt =  this.speechBuilder().addBreak('400ms').addT( 'PolicyWelcomeP2')
+        if(glbPolicyNo ==null) {
+            let policyWelcomeMsg = this.speechBuilder().addBreak('400ms').addT('ok').addBreak('400ms').addT('GiveMePolicyNumber')
+            this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg,reprompt);
+
+        }        
+        else  {
 
         if (entity === 'policy' && details === 'summary') {
             prompt = this.speechBuilder()=[]
@@ -228,7 +295,7 @@ app.setHandler({
             .addT( 'EmailPremiumCertificateOptions')
             this.ask(prompt, reprompt);
         }
-        
+    }        
     }, 
 
     
@@ -417,8 +484,7 @@ app.setHandler({
     'Unhandled': function() {
         let speech = this.speechBuilder()
         .addBreak('400ms').addT('WeSorry')
-        .addBreak('400ms').addT('fileAClaim')
-        .addBreak('400ms').addT('orAPolicy')
+        .addBreak('400ms').addT('welcomeMsg2')
         this.ask(speech);
     },
 

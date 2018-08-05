@@ -282,7 +282,8 @@
 				"Count of {category} paid",
 				"number of {category} paid",
 				"total number of {category} paid",
-				"number of {category}"
+				"number of {category}",
+				"How many premiums did I pay"
 			],
 			"inputs": [
 				{
@@ -377,6 +378,10 @@
 					"type": "Category"
 				}
 			]
+		},
+		{
+			"name": "AskPolicyNoIntent",
+			"phrases": []
 		}
 	]
 }

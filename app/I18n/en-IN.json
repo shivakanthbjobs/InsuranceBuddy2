@@ -6,6 +6,7 @@
     "welcomeMsg2" : "I can fetch your policy details , Claim Details , Create a new  Claim or Create a new Policy.  What  can I do  for you today?",
     "fileAClaim" : "File  an insurance Claim ",
     "orAPolicy" : "or Purchase a  New Insurance Policy",
+    "errorMsg" : "oops something wen wrong , Please try again",
     
     "FETCHPOLICYDETAILS" :"",
     "fetchPolicy" : "policydetails",
