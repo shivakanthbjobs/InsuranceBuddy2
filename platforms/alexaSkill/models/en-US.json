@@ -1,97 +1,94 @@
 {
-	"interactionModel": {
-		"languageModel": {
-			"invocationName": "insurance buddy",
-			"types": [
-				{
-					"name": "InsureAction",
-					"values": [
-						{
-							"id": null,
-							"name": {
-								"value": "accident"
-							}
-						},
-						{
-							"id": null,
-							"name": {
-								"value": "policy"
-							}
-						},
-						{
-							"id": null,
-							"name": {
-								"value": "claim"
-							}
-						}
-					]
-				}
-			],
-			"intents": [
-				{
-					"name": "StartIntent",
-					"samples": [
-						"a {action}",
-						"raise a {action}",
-						"i met with an {action}",
-						"{action}",
-						"create {action}",
-						"create a {action}",
-						"get me a {action}",
-						"purchase a {action}",
-						"File a {action}"
-					],
-					"slots": [
-						{
-							"name": "action",
-							"type": "InsureAction"
-						}
-					]
-				},
-				{
-					"name": "FetchPolicyIntent",
-					"samples": [
-						"my policy number is {policyno}",
-						"policy number is {policyno}"
-					],
-					"slots": [
-						{
-							"name": "policyno",
-							"type": "AMAZON.NUMBER"
-						}
-					]
-				},
-				{
-					"name": "AMAZON.YesIntent",
-					"samples": [
-						"Yes"
-					]
-				},
-				{
-					"name": "AMAZON.NoIntent",
-					"samples": [
-						"No"
-					]
-				},
-				{
-					"name": "AMAZON.CancelIntent",
-					"samples": []
-				},
-				{
-					"name": "AMAZON.HelpIntent",
-					"samples": []
-				},
-				{
-					"name": "AMAZON.StopIntent",
-					"samples": []
-				},
-				{
-					"name": "AMAZON.RepeatIntent",
-					"samples": [
-						"Repeat"
-					]
-				}
-			]
-		}
-	}
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "insurance buddy",
+      "intents": [
+        {
+          "name": "StartIntent",
+          "slots": [
+            {
+              "name": "action",
+              "type": "InsureAction"
+            }
+          ],
+          "samples": [
+            "a {action}",
+            "raise a {action}",
+            "i met with an {action}",
+            "{action}",
+            "create {action}",
+            "create a {action}",
+            "get me a {action}",
+            "purchase a {action}",
+            "File a {action}"
+          ]
+        },
+        {
+          "name": "FetchPolicyIntent",
+          "slots": [
+            {
+              "name": "policyno",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "my policy number is {policyno}",
+            "policy number is {policyno}"
+          ]
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": [
+            "Yes"
+          ]
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": [
+            "No"
+          ]
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.RepeatIntent",
+          "samples": [
+            "Repeat"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "accident"
+              }
+            },
+            {
+              "name": {
+                "value": "policy"
+              }
+            },
+            {
+              "name": {
+                "value": "claim"
+              }
+            }
+          ],
+          "name": "InsureAction"
+        }
+      ]
+    }
+  }
 }

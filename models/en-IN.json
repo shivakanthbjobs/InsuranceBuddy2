@@ -38,6 +38,28 @@
 			]
 		},
 		{
+			"name": "Cert",
+			"values": [
+				{
+					"value": "certificate",
+					"synonyms": [
+						"cert"
+					]
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"values": [
+				{
+					"value": "premiums"
+				},
+				{
+					"value": "premium"
+				}
+			]
+		},
+		{
 			"name": "Branch",
 			"values": [
 				{
@@ -72,28 +94,6 @@
 					"value": "mail"
 				}
 			]
-		},
-		{
-			"name": "Cert",
-			"values": [
-				{
-					"value": "certificate",
-					"synonyms": [
-						"cert"
-					]
-				}
-			]
-		},
-		{
-			"name": "Category",
-			"values": [
-				{
-					"value": "premiums"
-				},
-				{
-					"value": "premium"
-				}
-			]
 		}
 	],
 	"alexa": {
@@ -118,7 +118,9 @@
 					},
 					{
 						"name": "AMAZON.HelpIntent",
-						"samples": []
+						"samples": [
+							"Help"
+						]
 					},
 					{
 						"name": "AMAZON.StopIntent",
@@ -140,7 +142,9 @@
 			"phrases": [
 				"get {status} {details}",
 				"fetch {status} {entity} {details}",
+				"fetch my {status} {entity} {details}",
 				"create {status} {entity}",
+				"fetch {entity} {details}",
 				"create a {status} {entity}"
 			],
 			"inputs": [
@@ -382,6 +386,19 @@
 		{
 			"name": "AskPolicyNoIntent",
 			"phrases": []
+		},
+		{
+			"name": "ThankYouIntent",
+			"phrases": [
+				"bye now",
+				"bye for now",
+				"goodbye",
+				"good bye",
+				"ok bye",
+				"bye",
+				"thank you ",
+				"thanks"
+			]
 		}
 	]
 }
