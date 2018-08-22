@@ -50,27 +50,11 @@ app.setLanguageResources(languageResources);
 var myPremium = 1400
 var glbPolicyNo = null
 var glbClaimNo = null
-var dbData = null
- 
-
-
-const dbPolices = db.collection('Policy');
-console.log('dbPolices = '+ dbPolices)
-
-const policyQuery = dbPolices.where('PolicyNumber','==','13579')
-console.log('policyQuery = '+ policyQuery)
-
-policyQuery.get()
-            .then(Policy => {
-                Policy.forEach(doc => {
-                    dbData = doc.data();
-                    console.log('SHIVAPOLICY '+ dbData.PolicyNumber+ ' at '+ dbData.Summary)
-                })
-            })
+var dbPolicyRec = null
 
 // dbPolices.get()
 //     .then(doc => {
-//         dbData = doc.data().title;
+//         dbPolicyRec = doc.data().title;
 //     })
 
 
@@ -87,11 +71,11 @@ app.setHandler({
     },
 
     'WelcomeIntent': function () {
-        
-            
+
+
         glbPolicyNo = null
         glbClaimNo = null
-        let speech = dbData + this.speechBuilder()
+        let speech = this.speechBuilder()
             //.addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
 
             .addBreak('400ms').addT('welcomeMsg1')
@@ -175,14 +159,28 @@ app.setHandler({
     },
 
     'FetchPolicyIntent': function (policyno) {
-        let prompt = ''
-        glbPolicyNo = policyno
-        let reprompt = this.speechBuilder().addBreak('400ms').addT('PolicyWelcomeP2')
-        prompt = this.speechBuilder()
-            .addT('PolicyWelcomeP1')
-            .addBreak('400ms')
-            .addT('PolicyWelcomeP2')
-        this.ask(prompt, reprompt);
+
+        var dbPolices = db.collection('Policy');
+        console.log("fetchPolices :  dbPolices" + dbPolices)
+        var policyQuery = dbPolices.where('PolicyNumber', '==', policyno.value)
+        console.log("fetchPolices :  policyQuery" + policyQuery + "policyno.value = " + policyno.value)
+        policyQuery.get()
+            .then(Policy => {
+                Policy.forEach(doc => {
+                    dbPolicyRec = doc.data();
+                    console.log('SHIVAPOLICY ' + dbPolicyRec.PolicyNumber + ' at ' + dbPolicyRec.Summary)
+
+                    let prompt = ''
+                    glbPolicyNo = policyno
+                    let reprompt =   this.speechBuilder().addBreak('400ms').addT('PolicyWelcomeP2')
+                    prompt =  this.speechBuilder()
+                        .addT('PolicyWelcomeP1')
+                        .addBreak('400ms')
+                        .addT('PolicyWelcomeP2')
+                    this.ask(prompt, reprompt);
+            
+                })
+            })
     },
 
     'PolicySummaryIntent': function () {
@@ -194,8 +192,7 @@ app.setHandler({
 
         }
         else {
-            prompt = this.speechBuilder()
-                .addT('PolicySummary')
+            prompt = dbPolicyRec.Summary + this.speechBuilder()
                 .addBreak('400ms')
                 .addT('PolicySummaryOptions')
             this.ask(prompt, reprompt);
