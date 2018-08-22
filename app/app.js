@@ -10,7 +10,6 @@ admin.initializeApp({
 });
 
 var db = admin.firestore();
-console.log(db)
 
 
 // =================================================================================
@@ -52,14 +51,27 @@ var myPremium = 1400
 var glbPolicyNo = null
 var glbClaimNo = null
 var dbData = null
+ 
 
-const myPost = db.collection('posts').doc('firstpost');
 
+const dbPolices = db.collection('Policy');
+console.log('dbPolices = '+ dbPolices)
 
-myPost.get()
-    .then(doc => {
-        dbData = doc.data();
-    })
+const policyQuery = dbPolices.where('PolicyNumber','==','13579')
+console.log('policyQuery = '+ policyQuery)
+
+policyQuery.get()
+            .then(Policy => {
+                Policy.forEach(doc => {
+                    dbData = doc.data();
+                    console.log('SHIVAPOLICY '+ dbData.PolicyNumber+ ' at '+ dbData.Summary)
+                })
+            })
+
+// dbPolices.get()
+//     .then(doc => {
+//         dbData = doc.data().title;
+//     })
 
 
 // =================================================================================
