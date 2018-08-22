@@ -138,6 +138,12 @@
 	},
 	"intents": [
 		{
+			"name": "WelcomeIntent",
+			"phrases": [
+				"insurance Buddy"
+			]
+		},
+		{
 			"name": "StartIntent",
 			"phrases": [
 				"get {status} {details}",
@@ -390,14 +396,10 @@
 		{
 			"name": "ThankYouIntent",
 			"phrases": [
-				"bye now",
 				"bye for now",
 				"goodbye",
 				"good bye",
-				"ok bye",
-				"bye",
-				"thank you ",
-				"thanks"
+				"thank you"
 			]
 		}
 	]
