@@ -50,8 +50,7 @@ app.setLanguageResources(languageResources);
 var myPremium = 1400
 var glbPolicyNo = null
 var glbClaimNo = null
-var dbPolicyRec = null
-
+var glbPolicyRec = null
 // dbPolices.get()
 //     .then(doc => {
 //         dbPolicyRec = doc.data().title;
@@ -76,7 +75,7 @@ app.setHandler({
         glbPolicyNo = null
         glbClaimNo = null
         let speech = this.speechBuilder()
-            //.addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+            .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
 
             .addBreak('400ms').addT('welcomeMsg1')
             .addBreak('400ms').addT('welcomeMsg2')
@@ -159,7 +158,6 @@ app.setHandler({
     },
 
     'FetchPolicyIntent': function (policyno) {
-
         var dbPolices = db.collection('Policy');
         console.log("fetchPolices :  dbPolices" + dbPolices)
         var policyQuery = dbPolices.where('PolicyNumber', '==', policyno.value)
@@ -167,14 +165,15 @@ app.setHandler({
         policyQuery.get()
             .then(Policy => {
                 Policy.forEach(doc => {
-                    dbPolicyRec = doc.data();
-                    console.log('SHIVAPOLICY ' + dbPolicyRec.PolicyNumber + ' at ' + dbPolicyRec.Summary)
+                    glbPolicyRec = doc.data();
+                    console.log('SHIVAPOLICY ' + glbPolicyRec.PolicyNumber )
 
                     let prompt = ''
                     glbPolicyNo = policyno
                     let reprompt =   this.speechBuilder().addBreak('400ms').addT('PolicyWelcomeP2')
                     prompt =  this.speechBuilder()
                         .addT('PolicyWelcomeP1')
+                        .addText(glbPolicyRec.InsuranceCompany)
                         .addBreak('400ms')
                         .addT('PolicyWelcomeP2')
                     this.ask(prompt, reprompt);
@@ -192,7 +191,7 @@ app.setHandler({
 
         }
         else {
-            prompt = dbPolicyRec.Summary + this.speechBuilder()
+            prompt = glbPolicyRec.Summary + this.speechBuilder()
                 .addBreak('400ms')
                 .addT('PolicySummaryOptions')
             this.ask(prompt, reprompt);
@@ -208,7 +207,10 @@ app.setHandler({
         }
         else {
             prompt = this.speechBuilder()
-                .addT('NextPremium')
+                .addT('NextPremium1')
+                .addText(glbPolicyRec.DueDate)
+                .addT('NextPremium2')
+                .addText(glbPolicyRec.NextPremiumAmt)
                 .addBreak('400ms')
                 .addT('NextPremiumOptions')
             this.ask(prompt, reprompt);
@@ -228,6 +230,10 @@ app.setHandler({
         else {
             prompt = this.speechBuilder()
                 .addT('LastPremium')
+                .addText(glbPolicyRec.LastPremium)
+                .addT('LastPremium2')
+                .addText(glbPolicyRec.NextPremiumAmt)
+                .addT('LastPremium3')
                 .addBreak('400ms')
                 .addT('LastPremiumOptions')
             this.ask(prompt, reprompt);
@@ -246,6 +252,8 @@ app.setHandler({
 
             prompt = this.speechBuilder()
                 .addT('PremiumAmount')
+                .addText(glbPolicyRec.Premium)
+                .addT('PremiumAmount2')
                 .addBreak('400ms')
                 .addT('PremiumAmountOptions')
             this.ask(prompt, reprompt);
@@ -265,6 +273,8 @@ app.setHandler({
 
             prompt = this.speechBuilder()
                 .addT('HowManyPremiums')
+                .addText(glbPolicyRec.NoOfPremiums)
+                .addT('HowManyPremiums2')
                 .addBreak('400ms')
                 .addT('HowManyPremiumsOptions')
             this.ask(prompt, reprompt);
@@ -284,6 +294,7 @@ app.setHandler({
 
             prompt = this.speechBuilder()
                 .addT('PolicyExpiry')
+                .addText(glbPolicyRec.ExpiryDate)
                 .addBreak('400ms')
                 .addT('PolicyExpiryOptions')
             this.ask(prompt, reprompt);
@@ -302,6 +313,8 @@ app.setHandler({
 
             prompt = this.speechBuilder()
                 .addT('NearestBranch')
+                .addText(glbPolicyRec.BranchAddress)
+                .addT('NearestBranch2')
                 .addBreak('400ms')
                 .addT('NearestBranchOptions')
             this.ask(prompt, reprompt);
@@ -320,6 +333,8 @@ app.setHandler({
 
             prompt = this.speechBuilder()
                 .addT('RelationshipManager')
+                .addText(glbPolicyRec.RelationshipManager)
+                .addT('RelationshipManager2')
                 .addBreak('600ms')
                 .addT('RelationshipManagerOptions')
             this.ask(prompt, reprompt);
