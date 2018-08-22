@@ -2,7 +2,7 @@
 
 var admin = require("firebase-admin");
 
-var serviceAccount = require("./firebasics-db.json");
+var serviceAccount = require("./insurancebuddy2-firebase-db.json");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
