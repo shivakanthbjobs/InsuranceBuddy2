@@ -24,7 +24,6 @@ module.exports = {
                 })
             })
     },
-
     'PolicySummaryIntent': function () {
         let prompt = ''
         let reprompt = this.speechBuilder().addBreak('400ms').addT('PolicyWelcomeP2')

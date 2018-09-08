@@ -51,10 +51,6 @@ var myPremium = 1400
 var glbPolicyNo = null
 var glbClaimNo = null
 var glbPolicyRec = null
-// dbPolices.get()
-//     .then(doc => {
-//         dbPolicyRec = doc.data().title;
-//     })
 
 
 // =================================================================================
