@@ -1,6 +1,6 @@
 Start Insurance Buddy
 Fetch policy details
-My policy number is 13579
+My policy number is 95786
 Give me my policy Summary
 What is my premium amount
 how many premiums
@@ -9,6 +9,8 @@ Where is my nearest branch
 Who is my Relationship Manager
 When is my next premium due
 When did I pay my last premium
+
+13579, 95786
 
 
 SUCCES FLOW 

@@ -6,7 +6,8 @@
   "dependencies": {
     "firebase-admin": "^6.0.0",
     "jovo-framework": "^1.4.0",
-    "json-query": "^2.2.2"
+    "json-query": "^2.2.2",
+    "nodemon": "^1.18.4"
   },
   "devDependencies": {},
   "scripts": {

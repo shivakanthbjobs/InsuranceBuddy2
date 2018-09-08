@@ -147,8 +147,7 @@
 				{
 					"name": "WelcomeIntent",
 					"samples": [
-						"insurance Buddy",
-						"Buddy"
+						"insurance Buddy"
 					]
 				},
 				{
@@ -402,14 +401,10 @@
 				{
 					"name": "ThankYouIntent",
 					"samples": [
-						"bye now",
 						"bye for now",
 						"goodbye",
 						"good bye",
-						"ok bye",
-						"bye",
-						"thank you ",
-						"thanks"
+						"thank you"
 					]
 				},
 				{
