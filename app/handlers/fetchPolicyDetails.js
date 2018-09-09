@@ -1,28 +1,55 @@
 module.exports = {
     
     'FetchPolicyIntent': function (policyno) {
-        var dbPolices = db.collection('Policy');
-        console.log("fetchPolices :  dbPolices" + dbPolices)
-        var policyQuery = dbPolices.where('PolicyNumber', '==', policyno.value)
-        console.log("fetchPolices :  policyQuery" + policyQuery + "policyno.value = " + policyno.value)
-        policyQuery.get()
-            .then(Policy => {
-                Policy.forEach(doc => {
-                    glbPolicyRec = doc.data();
-                    console.log('SHIVAPOLICY ' + glbPolicyRec.PolicyNumber )
-
-                    let prompt = ''
-                    glbPolicyNo = policyno
-                    let reprompt =   this.speechBuilder().addBreak('400ms').addT('PolicyWelcomeP2')
-                    prompt =  this.speechBuilder()
-                        .addT('PolicyWelcomeP1')
-                        .addText(glbPolicyRec.InsuranceCompany)
-                        .addBreak('400ms')
-                        .addT('PolicyWelcomeP2')
-                    this.ask(prompt, reprompt);
-            
+        if(glbPolicyNo=="") {
+            var dbPolices = db.collection('Policy');
+            console.log("fetchPolices :  dbPolices" + dbPolices)
+            var policyQuery = dbPolices.where('PolicyNumber', '==', policyno.value)
+            console.log("fetchPolices :  policyQuery" + policyQuery + "policyno.value = " + policyno.value)
+            policyQuery.get()
+                .then(Policy => {
+                    Policy.forEach(doc => {
+                        glbPolicyRec = doc.data();
+                        console.log('SHIVAPOLICY ' + glbPolicyRec.PolicyNumber )
+    
+                        let prompt = ''
+                        glbPolicyNo = policyno
+                        let reprompt =   this.speechBuilder().addBreak('400ms').addT('PolicyWelcomeP2')
+                        prompt =  this.speechBuilder()
+                            .addT('PolicyWelcomeP1')
+                            .addText(glbPolicyRec.InsuranceCompany)
+                            .addBreak('400ms')
+                            .addT('PolicyWelcomeP2')
+                        this.ask(prompt, reprompt);
+                
+                    })
                 })
-            })
+    
+        }   
+        else  if(glbClaimNo=="") {
+            var dbClaims = db.collection('Claim');
+            console.log("fetchClaims :  dbClaims" + dbClaims)
+            var claimQuery = dbClaims.where('ClaimNo', '==', policyno.value)
+            console.log("fetchClaims :  claimQuery" + claimQuery + "policyno.value = " + policyno.value)
+            claimQuery.get()
+                .then(Claim => {
+                    Claim.forEach(doc => {
+                        glbClaimRec = doc.data();
+                        console.log('SHIVACLAIM ' + glbClaimRec.ClaimNumber )
+    
+                        let prompt = '';
+                        glbClaimNo = policyno;
+                        let reprompt =   this.speechBuilder().addBreak('400ms').addT('ClaimWelcomeP2')
+                        prompt =  this.speechBuilder()
+                            .addT('ClaimWelcomeP1')
+                            .addBreak('400ms')
+                            .addT('ClaimWelcomeP2')
+                        this.ask(prompt, reprompt);
+                
+                    })
+                })
+        } 
+
     },
     'PolicySummaryIntent': function () {
         let prompt = ''

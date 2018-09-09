@@ -188,6 +188,26 @@
 			]
 		},
 		{
+			"name": "FetchClaimIntent",
+			"phrases": [
+				"my {entity} number is {claimno}",
+				"{entity} number is {claimno}"
+			],
+			"inputs": [
+				{
+					"name": "claimno",
+					"type": {
+						"alexa": "AMAZON.NUMBER"
+					}
+				},
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},
+
+		{
 			"name": "PolicySummaryIntent",
 			"phrases": [
 				"Give me my {entity} {details}",
@@ -213,6 +233,67 @@
 				}
 			]
 		},
+		{
+			"name": "ClaimStatusIntent",
+			"phrases": [
+				" {entity} status",
+				"what is my  {entity} status"
+
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},
+		{
+			"name": "LastCommentIntent",
+			"phrases": [
+				" Last comment",
+				"Last comments",
+				"last comments on my claim",
+				"claims last comments"
+
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},
+		{
+			"name": "LastDepartmentIntent",
+			"phrases": [
+				" where is my claim",
+				"in which department is my claim",
+				"where is my claim currently"
+
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},
+		{
+			"name": "LossDateIntent",
+			"phrases": [
+				"what is the claims loss date",
+				"when was my loss date",
+				"loss date"
+
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},				
+
 		{
 			"name": "LastPremiumIntent",
 			"phrases": [

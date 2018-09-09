@@ -1,28 +1,6 @@
 module.exports = {
     
-    'FetchClaimIntent': function (claimNo) {
-        var dbClaims = db.collection('Claim');
-        console.log("fetchClaims :  dbClaims" + dbClaims)
-        var claimQuery = dbClaims.where('ClaimNumber', '==', claimNo.value)
-        console.log("fetchClaims :  claimQuery" + claimQuery + "claimno.value = " + claimNo.value)
-        claimQuery.get()
-            .then(Claim => {
-                Claim.forEach(doc => {
-                    glbClaimRec = doc.data();
-                    console.log('SHIVACLAIM ' + glbClaimRec.ClaimNumber )
-
-                    let prompt = ''
-                    glbClaimNo = claimNo
-                    let reprompt =   this.speechBuilder().addBreak('400ms').addT('ClaimWelcomeP2')
-                    prompt =  this.speechBuilder()
-                        .addT('ClaimWelcomeP1')
-                        .addText(glbClaimRec.InsuranceCompany)
-                        .addBreak('400ms')
-                        .addT('ClaimWelcomeP2')
-                    this.ask(prompt, reprompt);
-            
-                })
-            })
+    'FetchClaimIntent': function (claimno) {
     },
 
     'ClaimStatusIntent': function () {
@@ -33,9 +11,9 @@ module.exports = {
             this.followUpState('FetchClaimIntent').ask(claimWelcomeMsg, reprompt);
         }
         else {
-            prompt = glbClaimRec.Summary + this.speechBuilder()
+            prompt = glbClaimRec.ClaimStatus + this.speechBuilder()
                 .addBreak('400ms')
-                .addT('ClaimSummaryOptions')
+                .addT('ClaimStatusOptions')
             this.ask(prompt, reprompt);
         }
     },
@@ -50,7 +28,7 @@ module.exports = {
         else {
             prompt = glbClaimRec.LastComment + this.speechBuilder()
                 .addBreak('400ms')
-                .addT('ClaimSummaryOptions')
+                .addT('LastCommentOptions')
             this.ask(prompt, reprompt);
         }
     },
@@ -65,7 +43,7 @@ module.exports = {
         else {
             prompt = glbClaimRec.LastDepartment + this.speechBuilder()
                 .addBreak('400ms')
-                .addT('ClaimSummaryOptions')
+                .addT('LastDepartmentOptions')
             this.ask(prompt, reprompt);
         }
     },
@@ -80,13 +58,13 @@ module.exports = {
         else {
             prompt = glbClaimRec.LossDate + this.speechBuilder()
                 .addBreak('400ms')
-                .addT('ClaimSummaryOptions')
+                .addT('LossDateOptions')
             this.ask(prompt, reprompt);
         }
     },
 
 
-    'NoOfClaimantsIntent': function () {
+    'NoOfInvoicesIntent': function () {
         let prompt = ''
         let reprompt = this.speechBuilder().addBreak('400ms').addT('ClaimWelcomeP2')
         if (glbClaimNo == null) {
@@ -94,9 +72,9 @@ module.exports = {
             this.followUpState('FetchClaimIntent').ask(claimWelcomeMsg, reprompt);
         }
         else {
-            prompt = glbClaimRec.NoOfClaimants + this.speechBuilder()
+            prompt = glbClaimRec.NoOfInvoices + this.speechBuilder()
                 .addBreak('400ms')
-                .addT('ClaimSummaryOptions')
+                .addT('NoOfInvoicesOptions')
             this.ask(prompt, reprompt);
         }
     },   

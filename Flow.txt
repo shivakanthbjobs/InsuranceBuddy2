@@ -12,6 +12,15 @@ When did I pay my last premium
 
 13579, 95786
 
+Start Insurance Buddy
+Fetch claim details
+My claim number is 8123
+what is my  claim status
+last comments on my claim
+where is my claim
+what is the claims loss date
+
+
 
 SUCCES FLOW 
 =========

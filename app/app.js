@@ -48,16 +48,18 @@ const config = {
 const app = new App(config);
 app.setLanguageResources(languageResources);
 var myPremium = 1400
-var glbPolicyNo = null
-var glbClaimNo = null
-var glbPolicyRec = null
+global.glbPolicyNo = null
+global.glbClaimNo = null
+global.glbPolicyRec = null
+global.glbClaimRec = null
+
 
 
 // =================================================================================
 // App Logic
 // =================================================================================
 
-app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),require('./handlers/fetchPolicyDetails'),{
+app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),require('./handlers/fetchPolicyDetails'),require('./handlers/fetchClaimDetails'),{
 
     'LAUNCH': function () {
         glbPolicyNo = null
@@ -80,14 +82,14 @@ app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),re
     },
 
     'AMAZON.HelpIntent': function () {
-        if (glbPolicyNo == null) {
-            this.toIntent('WelcomeIntent');
+        if (glbClaimNo == null) {
+            this
+                .ask(this.speechBuilder().addT('helpPolicy'), this.speechBuilder().addT('helpPolicy'));
         } else if (glbPolicyNo != null) {
             this
                 .ask(this.speechBuilder().addT('helpPolicy'), this.speechBuilder().addT('helpPolicy'));
         } else {
-            this
-                .ask(this.speechBuilder().addT('helpPolicy'), this.speechBuilder().addT('helpPolicy'));
+            this.toIntent('WelcomeIntent');
         }
     },
 
@@ -107,21 +109,28 @@ app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),re
         let reprompt = this.speechBuilder().addBreak('400ms').addT('welcomeMsg2')
 
 
-        if (entity.value === 'claim' && status.value === 'new') {
-            StartIntent = this.speechBuilder()
+        if (entity.value === 'claim' ) {
+            glbClaimNo="";glbPolicyNo =null;
+            if (details.value === 'details' || status.value === 'existing') {
+                let claimWelcomeMsg = this.speechBuilder().addBreak('400ms').addT('ok').addBreak('400ms').addT('GiveMeClaimNumber')
+                this.followUpState('FetchClaimIntent').ask(claimWelcomeMsg, reprompt);
+                
+            } else if (status.value === 'new'){
+            
+                StartIntent = this.speechBuilder()
                 .addBreak('400ms').addT('getLocation')
                 .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Process1.mp3')
                 .addBreak('400ms').addT('accidentNotification')
                 .addBreak('400ms').addT('IsAnyoneInjured')
 
-
-            this
+                this
                 .showImageCard(this.t('cardTitle'), this.t('IsAnyoneInjured'), 'https://s3-eu-west-1.amazonaws.com/insurance-buddy/CardImages/claim/2.1+images.jpg')
                 .followUpState('SelectedClaimState')
                 .ask(StartIntent, reprompt);
+            }
         }
         else if (entity.value === 'policy') {
-
+            glbPolicyNo="";glbClaimNo=null;
             if (details.value === 'details' || status.value === 'existing') {
                 let policyWelcomeMsg = this.speechBuilder().addBreak('400ms').addT('ok').addBreak('400ms').addT('GiveMePolicyNumber')
                 this.followUpState('FetchPolicyIntent').ask(policyWelcomeMsg, reprompt);

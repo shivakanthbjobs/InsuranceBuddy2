@@ -193,6 +193,23 @@
 					]
 				},
 				{
+					"name": "FetchClaimIntent",
+					"samples": [
+						"my {entity} number is {claimno}",
+						"{entity} number is {claimno}"
+					],
+					"slots": [
+						{
+							"name": "claimno",
+							"type": "AMAZON.NUMBER"
+						},
+						{
+							"name": "entity",
+							"type": "Entity"
+						}
+					]
+				},
+				{
 					"name": "PolicySummaryIntent",
 					"samples": [
 						"Give me my {entity} {details}",
@@ -215,6 +232,62 @@
 						{
 							"name": "details",
 							"type": "Details"
+						}
+					]
+				},
+				{
+					"name": "ClaimStatusIntent",
+					"samples": [
+						" {entity} status",
+						"what is my  {entity} status"
+					],
+					"slots": [
+						{
+							"name": "entity",
+							"type": "Entity"
+						}
+					]
+				},
+				{
+					"name": "LastCommentIntent",
+					"samples": [
+						" Last comment",
+						"Last comments",
+						"last comments on my claim",
+						"claims last comments"
+					],
+					"slots": [
+						{
+							"name": "entity",
+							"type": "Entity"
+						}
+					]
+				},
+				{
+					"name": "LastDepartmentIntent",
+					"samples": [
+						" where is my claim",
+						"in which department is my claim",
+						"where is my claim currently"
+					],
+					"slots": [
+						{
+							"name": "entity",
+							"type": "Entity"
+						}
+					]
+				},
+				{
+					"name": "LossDateIntent",
+					"samples": [
+						"what is the claims loss date",
+						"when was my loss date",
+						"loss date"
+					],
+					"slots": [
+						{
+							"name": "entity",
+							"type": "Entity"
 						}
 					]
 				},
