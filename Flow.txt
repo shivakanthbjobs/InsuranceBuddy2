@@ -1,6 +1,6 @@
 Start Insurance Buddy
 Fetch policy details
-My policy number is 95786
+My policy number is 13579
 Give me my policy Summary
 What is my premium amount
 how many premiums
@@ -10,11 +10,11 @@ Who is my Relationship Manager
 When is my next premium due
 When did I pay my last premium
 
-13579, 95786
+13579, 707 
 
 Start Insurance Buddy
 Fetch claim details
-My claim number is 8123
+My claim number is 800
 what is my  claim status
 last comments on my claim
 where is my claim
