@@ -22,7 +22,17 @@ module.exports = {
                 .showImageCard(this.t('cardTitle'), this.t('pinPointingYourCar'), 'https://s3-eu-west-1.amazonaws.com/insurance-buddy/CardImages/claim/3.+giphy-4.gif')
                 .ask(SelectedClaimState, this.t('boolReprompt'));
         },
-
+        'RepeatIntent': function ()  {
+            this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
+        },
+    
         'Unhandled': function () {
             this.followUpState('SelectedClaimState')
                 .ask(this.t('boolPrompt'), this.t('boolReprompt'));
@@ -42,6 +52,17 @@ module.exports = {
         'NoIntent': function () {
             this.toStateIntent('SelectedClaimState', 'NoIntent');
         },
+        'RepeatIntent': function ()  {
+            this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
+        },
+    
         'Unhandled': function () {
             this.followUpState('NeedAmbulance')
                 .ask(this.t('boolPrompt'), this.t('boolReprompt'));
@@ -79,6 +100,17 @@ module.exports = {
             this.tell(droneArrived, this.t('boolReprompt'));
 
         },
+        'RepeatIntent': function ()  {
+            this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
+        },
+    
         'Unhandled': function () {
             this.followUpState('DroneArrived')
                 .ask(this.t('boolPrompt'), this.t('boolReprompt'));
@@ -115,6 +147,17 @@ module.exports = {
             this.followUpState('UberArrived').tell(CallForTowTruck, this.t('boolReprompt'));
 
         },
+        'RepeatIntent': function ()  {
+            this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
+        },
+    
         'Unhandled': function () {
             this.followUpState('CallForTowTruck')
                 .ask(this.t('boolPrompt'), this.t('boolReprompt'));
@@ -141,6 +184,17 @@ module.exports = {
             this.toStateIntent('ClaimThanks', 'YesIntent');
 
         },
+        'RepeatIntent': function ()  {
+            this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
+        },
+    
         'Unhandled': function () {
             this.followUpState('UberArrived')
                 .ask(this.t('boolPrompt'), this.t('boolReprompt'));
@@ -172,6 +226,17 @@ module.exports = {
             this.followUpState('ClaimThanks').tell(ClaimThanks, this.t('boolReprompt'));
 
         },
+        'RepeatIntent': function ()  {
+            this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
+        },
+    
         'Unhandled': function () {
             if (glbPolicyNo == null) {
                 this
@@ -188,5 +253,4 @@ module.exports = {
 
 
     },
-
 };

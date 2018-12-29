@@ -2,16 +2,96 @@
 	"invocation": "insurance buddy",
 	"inputTypes": [
 		{
-			"name": "InsureAction",
+			"name": "Entity",
 			"values": [
-				{
-					"value": "accident"
-				},
 				{
 					"value": "policy"
 				},
 				{
 					"value": "claim"
+				}
+			]
+		},
+		{
+			"name": "Details",
+			"values": [
+				{
+					"value": "benefits"
+				},
+				{
+					"value": "summary"
+				},
+				{
+					"value": "details"
+				}
+			]
+		},
+		{
+			"name": "Status",
+			"values": [
+				{
+					"value": "existing"
+				},
+				{
+					"value": "New"
+				}
+			]
+		},
+		{
+			"name": "Cert",
+			"values": [
+				{
+					"value": "certificate",
+					"synonyms": [
+						"cert"
+					]
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"values": [
+				{
+					"value": "premiums"
+				},
+				{
+					"value": "premium"
+				}
+			]
+		},
+		{
+			"name": "Branch",
+			"values": [
+				{
+					"value": "branch"
+				}
+			]
+		},
+		{
+			"name": "RelationshipManager",
+			"values": [
+				{
+					"value": "relation ship manager",
+					"synonyms": [
+						"RM",
+						"contact person",
+						"contact",
+						"relationship Manager"
+					]
+				}
+			]
+		},
+		{
+			"name": "Mail",
+			"values": [
+				{
+					"value": "e-mail"
+				},
+				{
+					"value": "email"
+				},
+				{
+					"value": "mail"
 				}
 			]
 		}
@@ -34,21 +114,17 @@
 					},
 					{
 						"name": "AMAZON.CancelIntent",
-						"samples": []
+						"samples": ["Cancel"]
 					},
 					{
 						"name": "AMAZON.HelpIntent",
-						"samples": []
+						"samples": [
+							"Help"
+						]
 					},
 					{
 						"name": "AMAZON.StopIntent",
-						"samples": []
-					},
-					{
-						"name": "AMAZON.RepeatIntent",
-						"samples": [
-							"Repeat"
-						]
+						"samples": ["Stop","Exit"]
 					}
 				]
 			}
@@ -56,30 +132,53 @@
 	},
 	"intents": [
 		{
+			"name": "WelcomeIntent",
+			"phrases": [
+				"insurance Buddy"
+			]
+		},
+		{
+            "name": "RepeatIntent",
+            "alexa": {
+                "name": "AMAZON.RepeatIntent"
+            },
+            "phrases": [
+                "repeat",
+                "could you repeat that",
+                "what",
+                "say that again"
+            ]
+        },
+		{
 			"name": "StartIntent",
 			"phrases": [
-				"a {action}",
-				"raise a {action}",
-				"i met with an {action}",
-				"{action}",
-				"create {action}",
-				"create a {action}",
-				"get me a {action}",
-				"purchase a {action}",
-				"File a {action}"
+				"get {status} {details}",
+				"fetch {status} {entity} {details}",
+				"fetch my {status} {entity} {details}",
+				"create {status} {entity}",
+				"fetch {entity} {details}",
+				"create a {status} {entity}"
 			],
 			"inputs": [
 				{
-					"name": "action",
-					"type": "InsureAction"
+					"name": "entity",
+					"type": "Entity"
+				},
+				{
+					"name": "details",
+					"type": "Details"
+				},
+				{
+					"name": "status",
+					"type": "Status"
 				}
 			]
 		},
 		{
 			"name": "FetchPolicyIntent",
 			"phrases": [
-				"my policy number is {policyno}",
-				"policy number is {policyno}"
+				"my {entity} number is {policyno}",
+				"{entity} number is {policyno}"
 			],
 			"inputs": [
 				{
@@ -87,7 +186,307 @@
 					"type": {
 						"alexa": "AMAZON.NUMBER"
 					}
+				},
+				{
+					"name": "entity",
+					"type": "Entity"
 				}
+			]
+		},
+		{
+			"name": "FetchClaimIntent",
+			"phrases": [
+				"my {entity} number is {claimno}",
+				"{entity} number is {claimno}"
+			],
+			"inputs": [
+				{
+					"name": "claimno",
+					"type": {
+						"alexa": "AMAZON.NUMBER"
+					}
+				},
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},
+
+		{
+			"name": "PolicySummaryIntent",
+			"phrases": [
+				"Give me my {entity} {details}",
+				"Benefit of {entity}",
+				"{entity} description",
+				"{entity} {details}",
+				"What are my {entity} {details} ",
+				"What does the policy offer ",
+				"What are its features",
+				"What does my policy offer ",
+				"What are my policy features",
+				"What does my policy include",
+				"What does my policy cover"
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				},
+				{
+					"name": "details",
+					"type": "Details"
+				}
+			]
+		},
+		{
+			"name": "ClaimStatusIntent",
+			"phrases": [
+				" {entity} status",
+				"what is my  {entity} status"
+
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},
+		{
+			"name": "LastCommentIntent",
+			"phrases": [
+				" Last comment",
+				"Last comments",
+				"last comments on my claim",
+				"claims last comments"
+
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},
+		{
+			"name": "LastDepartmentIntent",
+			"phrases": [
+				" where is my claim",
+				"in which department is my claim",
+				"where is my claim currently"
+
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},
+		{
+			"name": "LossDateIntent",
+			"phrases": [
+				"what is the claims loss date",
+				"when was my loss date",
+				"loss date"
+
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},				
+
+		{
+			"name": "LastPremiumIntent",
+			"phrases": [
+				"When did I pay my last {cert} ",
+				"{cert} paid date",
+				"date of {cert} paid",
+				"{cert} paid date of my {entity}",
+				"When did I pay {cert}",
+				"Previous premium date"
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				},
+				{
+					"name": "cert",
+					"type": "Cert"
+				}
+			]
+		},
+		{
+			"name": "NextPremiumIntent",
+			"phrases": [
+				"When is my next {cert} due",
+				"{cert} Due Date",
+				"Due Date",
+				"What is my {cert} due date",
+				"When is my due date ",
+				"my due date please",
+				"when should i pay my next premium",
+				"when is my renewal due date",
+				"When is my due",
+				"When is my next payment",
+				"When am i due"
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				},
+				{
+					"name": "cert",
+					"type": "Cert"
+				}
+			]
+		},
+		{
+			"name": "PremiumAmountIntent",
+			"phrases": [
+				"What is my {cert} amount ",
+				"{cert} Amount",
+				"What is my {entity} {cert} amount",
+				"What is this year {cert}",
+				"How much did i pay this year",
+				"How much did i pay",
+				"What was my premium",
+				"Year's premium",
+				"my Premium Amount",
+				"What's my premium"
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				},
+				{
+					"name": "cert",
+					"type": "Cert"
+				}
+			]
+		},
+		{
+			"name": "HowManyPremiumsIntent",
+			"phrases": [
+				"How many premiums did I pay since the {entity} commencement",
+				"Count of {category} paid",
+				"number of {category} paid",
+				"total number of {category} paid",
+				"number of {category}",
+				"How many premiums did I pay"
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				},
+				{
+					"name": "category",
+					"type": "Category"
+				}
+			]
+		},
+		{
+			"name": "PolicyExpiryIntent",
+			"phrases": [
+				"When is my {entity} expiry",
+				"{entity} expiry",
+				"When is my {entity} expiring "
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},
+		{
+			"name": "NearestBranchIntent",
+			"phrases": [
+				"Where is my nearest {branch}",
+				"{branch}",
+				"nearest {branch}",
+				"{branch} in the city",
+				"Where is the nearest {branch}"
+			],
+			"inputs": [
+				{
+					"name": "branch",
+					"type": "Branch"
+				}
+			]
+		},
+		{
+			"name": "RelationshipManagerIntent",
+			"phrases": [
+				"Who is my {RM} ",
+				"{RM} for {entity}",
+				"{RM} from Company",
+				"I need to {RM} someone at the insurance company",
+				"Let me talk to the company whom should i talk to",
+				"Whom should i talk to for my queries",
+				"I have some clarifications"
+			],
+			"inputs": [
+				{
+					"name": "RM",
+					"type": "RelationshipManager"
+				},
+				{
+					"name": "entity",
+					"type": "Entity"
+				}
+			]
+		},
+		{
+			"name": "EmailDocumentIntent",
+			"phrases": [
+				"{mail} my {category} {cert} please",
+				"{mail} {category} {cert}",
+				"{mail} {entity} {details}",
+				"{mail} my {entity} {details} please"
+			],
+			"inputs": [
+				{
+					"name": "entity",
+					"type": "Entity"
+				},
+				{
+					"name": "mail",
+					"type": "Mail"
+				},
+				{
+					"name": "details",
+					"type": "Details"
+				},
+				{
+					"name": "cert",
+					"type": "Cert"
+				},
+				{
+					"name": "category",
+					"type": "Category"
+				}
+			]
+		},
+		{
+			"name": "AskPolicyNoIntent",
+			"phrases": []
+		},
+		{
+			"name": "ThankYouIntent",
+			"phrases": [
+				"bye for now",
+				"goodbye",
+				"good bye",
+				"thank you"
 			]
 		}
 	]

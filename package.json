@@ -5,9 +5,12 @@
   "main": "index.js",
   "dependencies": {
     "firebase-admin": "^6.0.0",
-    "jovo-framework": "^1.4.0",
+    "jovo-cli": "^2.0.3",
+    "jovo-framework": "^1.4.19",
     "json-query": "^2.2.2",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {},
   "scripts": {

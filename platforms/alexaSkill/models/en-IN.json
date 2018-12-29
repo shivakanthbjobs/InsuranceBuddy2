@@ -151,6 +151,15 @@
 					]
 				},
 				{
+					"name": "AMAZON.RepeatIntent",
+					"samples": [
+						"repeat",
+						"could you repeat that",
+						"what",
+						"say that again"
+					]
+				},
+				{
 					"name": "StartIntent",
 					"samples": [
 						"get {status} {details}",
@@ -494,7 +503,9 @@
 				},
 				{
 					"name": "AMAZON.CancelIntent",
-					"samples": []
+					"samples": [
+						"Cancel"
+					]
 				},
 				{
 					"name": "AMAZON.HelpIntent",
@@ -504,12 +515,9 @@
 				},
 				{
 					"name": "AMAZON.StopIntent",
-					"samples": []
-				},
-				{
-					"name": "AMAZON.RepeatIntent",
 					"samples": [
-						"Repeat"
+						"Stop",
+						"Exit"
 					]
 				}
 			]

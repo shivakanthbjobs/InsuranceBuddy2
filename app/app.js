@@ -20,6 +20,7 @@ const { App } = require('jovo-framework');
 
 var jsonQuery = require('json-query')
 
+const rp = require('request-promise');
 
 const hi = require('./I18n/hi-IN.json');
 const inn = require('./I18n/en-IN.json');
@@ -37,6 +38,8 @@ const config = {
     intentMap: {
         'AMAZON.YesIntent': 'YesIntent',
         'AMAZON.NoIntent': 'NoIntent',
+        'AMAZON.RepeatIntent':'RepeatIntent',
+        'AMAZON.CancelIntent': 'CancelIntent'
     },
     i18n: {
         resources: languageResources,
@@ -61,12 +64,26 @@ global.glbClaimRec = null
 
 app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),require('./handlers/fetchPolicyDetails'),require('./handlers/fetchClaimDetails'),{
 
-    'LAUNCH': function () {
+    async LAUNCH() {
         glbPolicyNo = null
         glbClaimNo = null
+
+       /* if (!this.request().getAccessToken()) {
+            this.alexaSkill().showAccountLinkingCard();
+            this.tell('You must authenticate with your Amazon Account to use this skill. I sent instructions for how to do this in your Alexa App');
+        } else {
+            let url = 'https://api.amazon.com/user/profile?access_token=${this.$request.getAccessToken()}';
+    
+            await rp(url).then((body) => {
+                let data = JSON.parse(body);
+                
+               this.toIntent('WelcomeIntent');//                this.tell(data.name + ', ' + data.email); // Output: Kaan Kilic, email@jovo.tech
+            });
+        }*/
         this.toIntent('WelcomeIntent');
     },
-
+    
+    
     'WelcomeIntent': function () {
         glbPolicyNo = null
         glbClaimNo = null
@@ -81,7 +98,7 @@ app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),re
             .ask(speech);
     },
 
-    'AMAZON.HelpIntent': function () {
+     'AMAZON.HelpIntent': function () {
         if (glbClaimNo == null) {
             this
                 .ask(this.speechBuilder().addT('helpPolicy'), this.speechBuilder().addT('helpPolicy'));
@@ -91,6 +108,17 @@ app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),re
         } else {
             this.toIntent('WelcomeIntent');
         }
+    },
+   
+    'CancelIntent': function () {
+        let speech = this.speechBuilder()
+            .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+            //.addT(str)
+            .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+
+
+        this
+            .tell(speech, speech);
     },
 
     'ThankYouIntent': function () {
@@ -155,6 +183,17 @@ app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),re
             this.toIntent('Unhandled');
         }
     },
+    'RepeatIntent': function ()  {
+        this.repeat();
+    },
+    'CancelIntent': function () {
+        let speech = this.speechBuilder()
+            .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+            //.addT(str)
+            .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+        this.tell(speech, speech);
+    },
+
 
    'Unhandled': function () {
         let speech = this.speechBuilder()
@@ -162,9 +201,11 @@ app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),re
             .addBreak('400ms').addT('welcomeMsg2')
         this.ask(speech);
     },
-
+    
+    'RepeatIntent': function ()  {
+        this.repeat();
+    }
 });
 app.setLanguageResources(languageResources, { returnObjects: true });
 
 module.exports.app = app;
-

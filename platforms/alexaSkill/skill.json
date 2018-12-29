@@ -1,29 +1,5 @@
 {
 	"manifest": {
-		"publishingInformation": {
-			"locales": {
-				"en-US": {
-					"summary": "Sample Short Description",
-					"examplePhrases": [
-						"Alexa open hello world"
-					],
-					"name": "InsuranceBuddy2",
-					"description": "Sample Full Description"
-				},
-				"en-IN": {
-					"summary": "Sample Short Description",
-					"examplePhrases": [
-						"Alexa open hello world"
-					],
-					"name": "InsuranceBuddy2",
-					"description": "Sample Full Description"
-				}
-			},
-			"isAvailableWorldwide": true,
-			"testingInstructions": "Sample Testing Instructions.",
-			"category": "EDUCATION_AND_REFERENCE",
-			"distributionCountries": []
-		},
 		"apis": {
 			"custom": {
 				"endpoint": {
@@ -33,6 +9,59 @@
 				"interfaces": []
 			}
 		},
-		"manifestVersion": "1.0"
+		"manifestVersion": "1.0",
+		"privacyAndCompliance": {
+			"locales": {
+				"en-US": {},
+				"en-IN": {}
+			},
+			"allowsPurchases": false,
+			"usesPersonalInfo": false,
+			"isChildDirected": false,
+			"isExportCompliant": true,
+			"containsAds": false
+		},
+		"publishingInformation": {
+			"locales": {
+				"en-US": {
+					"name": "Insurance Buddy",
+					"smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/d10a/f18baa04dede42a8b5023782407393f1/APP_ICON?versionId=Vi_XeU2nm78vHQ9SYmDRZ9DPix9PLcjJ&AWSAccessKeyId=AKIAJFEYRBGIHK2BBYKA&Expires=1546186852&Signature=B1c3Ew7I6MrsFoxnKE9xKY1abYA%3D",
+					"largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9e7c/7ad11950f2ef40e4beeaeffebef74809/APP_ICON_LARGE?versionId=_PasE0TxQ6i1Zvmwpt9E9MLHyXeX0x2r&AWSAccessKeyId=AKIAJFEYRBGIHK2BBYKA&Expires=1546186852&Signature=CkvLPbZnSF0Q8lxWRschotvf7x4%3D",
+					"summary": "Your Auto Insurance Companion",
+					"description": "Insurance Buddy improves Productivity of a end customer by providing auto insurance services at finger tips  like Creation of a Claim , Creation of Policy or fetch details of Policy or Fetch details of the Claim  with multi lingual capabilities ( English and Hindi).",
+					"examplePhrases": [
+						"Alexa open insurance buddy",
+						"Alexa Start insurance Buddy",
+						"Alexa Insurance buddy"
+					],
+					"keywords": [
+						"insurance",
+						"auto",
+						"insurance"
+					]
+				},
+				"en-IN": {
+					"name": "Insurance Buddy",
+					"smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/82ca/2967f7c68857433fbbe77fb3cd5c63bc/APP_ICON?versionId=rLEF_vVZcqgafcs.gxTEpRbsW3XUMlTB&AWSAccessKeyId=AKIAJFEYRBGIHK2BBYKA&Expires=1546186852&Signature=f%2BPcWGa5KD4MBY%2B6iZb7PfyZ2BU%3D",
+					"largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/99e9/6c4ae2fb9f774a1fa66ee49013533834/APP_ICON_LARGE?versionId=AEZrj_I04I.Dx3qf.E1d4hRcRZijOWZ4&AWSAccessKeyId=AKIAJFEYRBGIHK2BBYKA&Expires=1546186852&Signature=0MeVnNutRHL84XRvcpQZ2OUvbzs%3D",
+					"summary": "Your Auto Insurance Companion",
+					"description": "Insurance Buddy improves Productivity of a end customer by providing auto insurance services at finger tips  like Creation of a Claim , Creation of Policy or fetch details of Policy or Fetch details of the Claim  with multi lingual capabilities ( English and Hindi)",
+					"examplePhrases": [
+						"Alexa Start insurance Buddy",
+						"Alexa open insurance Buddy",
+						"Alexa Insurance buddy"
+					],
+					"keywords": [
+						"insurance",
+						"auto",
+						"insurance"
+					]
+				}
+			},
+			"isAvailableWorldwide": true,
+			"testingInstructions": "User: Start insurance buddy\nAlexa :Welcome to Insurance Buddy What do you want to do File a Claim or Purchase a New Policy\nUser: claim\nAlexa :Pin pointing your location and checking your records with us We received a notification from your Cars telematics Device that you have had an accident Is anyone Injured\nUser: no\nAlexa :I am glad to hear that you are ok Mr Shiv We have pin pointed your car location We have informed Local Police about the accident , A drone is on its way to your location The Photos send by Drone will help us assess the situation and take our next course of action The Drone has arrived It would take pictures of the accident Can it take pictures of the accident to help us in our investigation\nUser: yes\nAlexa :We have received the photos from the drone we have assessed the extent of damage would like to tow the vehicle Can we go ahead an book a tow truck\nUser: yes\nAlexa :Booking a tow truck for you to facilitate your appointments I also have booked a uber car to take you to your destination Dont worry about your car , we will take care of it Your tow truck has arrived Please dont forget to keep you keys in the car Can we proceed\nUser: yes\nAlexa :Uber car has arrived Please proceed Mr Shiv , Did you get into the car\nUser: yes\nAlexa :We have raised a claim on your behalf and details have been sent to your email We will keep you posted on the progress of the your car As regards to claim , we will keep you posted Thank you from Insurance Buddy",
+			"category": "EDUCATION_AND_REFERENCE",
+			"distributionCountries": []
+		}
 	}
 }

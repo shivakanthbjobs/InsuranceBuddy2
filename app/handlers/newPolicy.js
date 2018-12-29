@@ -22,6 +22,17 @@ module.exports = {
             this.tell(BuyAPolicy, this.t('boolReprompt'));
 
         },
+        'RepeatIntent': function ()  {
+            this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
+        },
+
         'Unhandled': function () {
             this.followUpState('BuyAPolicy')
                 .ask(this.t('boolReprompt'), this.t('boolReprompt'));
@@ -48,6 +59,17 @@ module.exports = {
             this.tell(ProfileDescription);
 
         },
+        'RepeatIntent': function ()  {
+            this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
+        },
+
         'Unhandled': function () {
             this.followUpState('ProfileDescription')
                 .ask(this.t('boolReprompt'), this.t('boolReprompt'));
@@ -78,6 +100,17 @@ module.exports = {
             this.tell(HealthReport);
 
         },
+        'RepeatIntent': function ()  {
+            this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
+        },
+
         'Unhandled': function () {
             this.followUpState('HealthReport')
                 .ask(this.t('boolReprompt'), this.t('boolReprompt'));
@@ -106,6 +139,17 @@ module.exports = {
             this.tell(InitialPremiumAndOfferOne);
 
         },
+        'RepeatIntent': function ()  {
+            this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
+        },
+
         'Unhandled': function () {
             this.followUpState('InitialPremiumAndOfferOne')
                 .ask(this.t('boolReprompt'), this.t('boolReprompt'));
@@ -130,6 +174,17 @@ module.exports = {
             this.followUpState('FinalPremium').ask(AddOnTwo, this.t('boolReprompt'));
 
         },
+        'RepeatIntent': function ()  {
+            this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
+        },
+
         'Unhandled': function () {
             this.followUpState('AddOnTwo')
                 .ask(this.t('boolReprompt'), this.t('boolReprompt'));
@@ -169,6 +224,17 @@ module.exports = {
             this.followUpState('CreditCardSection').ask(FinalPremium, this.t('boolReprompt'));
 
         },
+        'RepeatIntent': function ()  {
+            this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
+        },
+
         'Unhandled': function () {
             this.followUpState('FinalPremium')
                 .ask(this.t('boolReprompt'), this.t('boolReprompt'));
@@ -195,6 +261,17 @@ module.exports = {
 
 
         },
+        'RepeatIntent': function ()  {
+            this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
+        },
+
         'Unhandled': function () {
             this.followUpState('CreditCardSection')
                 .ask(this.t('boolReprompt'), this.t('boolReprompt'));
@@ -220,6 +297,17 @@ module.exports = {
             this.tell(FingerPrint, this.t('boolReprompt'));
 
         },
+        'RepeatIntent': function ()  {
+            this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
+        },
+
         'Unhandled': function () {
             this.followUpState('FingerPrint')
                 .ask(this.t('boolReprompt'), this.t('boolReprompt'));
@@ -255,8 +343,15 @@ module.exports = {
                 .ask(this.t('boolReprompt'), this.t('boolReprompt'));
         },
 
-        'RepeatIntent': function () {
+        'RepeatIntent': function ()  {
             this.repeat();
+        },
+        'CancelIntent': function () {
+            let speech = this.speechBuilder()
+                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                //.addT(str)
+                .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
+            this.tell(speech, speech);
         },
     },
 
