@@ -50,7 +50,7 @@ const config = {
 
 const app = new App(config);
 app.setLanguageResources(languageResources);
-var myPremium = 1400
+global.myPremium = 1400
 global.glbPolicyNo = null
 global.glbClaimNo = null
 global.glbPolicyRec = null

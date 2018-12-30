@@ -1,3 +1,53 @@
+CREATE A CLAIM 
+==============
+
+User : start insurance buddy
+Alexa : <Short audio> Welcome to Insurance Buddy , I am your Personal  Insurance Assistant. I can Create a new Policy , Create a new Claim , Fetch you Claim details or Fetch your Policy Details . 
+        What can I do for you today?
+User : create a new claim
+Alexa : Pin pointing your location and checking your records with us
+<Short audio>We received a notification from your Cars telematics Device that you have had an accident Is anyone Injured
+User : No
+Alexa :I am glad to hear that you are ok Mr Shiv We have identified the current location of your car We have informed Local Police about the accident The Photos sent by Drone will help us assess the situation and help us take our next course of action
+User : Yes
+Alexa :<Short audio> We have received photos from the drone We have analysed the intensity of the damage. would you like to tow the vehicle? Can we go ahead and book a tow truck...?
+User : Yes
+Alexa :Booking a tow truck for you to facilitate your appointments I also have booked a car to take you to your destination Dont worry about your car
+<Short audio>Your tow truck has arrived Please hand over keys of the damaged vehicle with the tow truck driver Can we proceed ... ?
+User : Yes
+Alexa :<Short audio> An alternate car has arrived for your convenience Please proceed Mr Shiv , Did you get into the car
+User : Yes
+Alexa :We have raised a claim on your behalf and details have been sent to your email We will keep you posted on the status of your car As regards to claim Thank you from Insurance Buddy , take care <Short audio>
+
+CREATE A POLICY
+===============
+User : start insurance buddy
+Alexa : <Short audio> Welcome to Insurance Buddy , I am your Personal  Insurance Assistant. I can Create a new Policy , Create a new Claim , Fetch you Claim details or Fetch your Policy Details .
+        What can I do for you today?
+User : new policy
+Alexa : ok We see you are in a MERCEDES Car Showroom and conducted a payment transaction <Short audio> Have you bought a new car
+User : yes
+Alexa : <Short audio>Congratulations on your new Mercedes S Class We are aware that your car comes with a pre-installed Telematics device along with state-of-the-art safety features Shall i go ahead and get the insurance quote for your new car...?
+User : yes
+Alexa : For fetching the policy details I would need your consent to get access to your personal records Can i fetch your details....?
+User : yes
+Alexa : Fetching your details<Short audio>I see from your health records that you are on medication for hypertension Thankfully your driving record has come out clean Do you want me to proceed to the generation of quote Can we proceed ... ?
+User : yes
+Alexa : <Short audio>The quote is ready The base premium is ... 1400 dollars there are additional features you can opt for Do you need Break down rescue cover for an additional charge of 90 dollars
+User : yes
+Alexa : Do you need Replacement lock cover for additional charge of 80 dollars
+User : yes
+Alexa : <Short audio>Your final premiums including taxes is 1580 dollars annually Shall we proceed for payment...?
+User : yes
+Alexa : Can i continue using your default credit card
+User : yes
+Alexa : To authenticate your payment Please place your thumb on the phone and Say Yes to proceed
+User : yes
+Alexa : Authenticating your finger print <Short audio> The payment is successful<Short audio>Congratulations on your policy Your car insurance policy number is PL102312 Physical copy of your insurance policy documents will reach you within 5 - 7 working days
+
+
+FETCH POLICY DETAILS 
+====================
 Start Insurance Buddy
 Fetch policy details
 My policy number is 235
@@ -9,9 +59,10 @@ Where is my nearest branch
 Who is my Relationship Manager
 When is my next premium due
 When did I pay my last premium
+--13579, 235 
 
-13579, 235 
-
+FETCH CLAIM DETAILS 
+====================
 Start Insurance Buddy
 Fetch claim details
 My claim number is 800
