@@ -13,7 +13,7 @@
 
 **Multi Platform:** Implemented using Alexa  SDK ( Alexa Skill ) and Google SDK (Google Action)
 
-**Multi Process:**Personalized Auto Insurance Conversations
+**Multi Process:** Personalized Auto Insurance Conversations
 - Create a New Policy 
 - Create a Claim ( post accident)
  -Fetch Policy details
