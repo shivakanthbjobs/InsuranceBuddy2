@@ -24,6 +24,18 @@
 - Hindi 
 
 
+## Benefits 
+
+- Multi Platform : Works on amazon echo devices and google home devices (device having a google assistant )
+
+- Light weight : Installation not required just need one to enable skill or action 
+
+- Works on home devices and Mobile devices 
+
+- Multi Lingual : Flexible framework make adding a new language extremely simple
+
+
+
 ### Installation
 It is a node application 
 
