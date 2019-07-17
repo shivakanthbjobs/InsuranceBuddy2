@@ -5,13 +5,13 @@ module.exports = {
     'BuyAPolicy': {
         'YesIntent': function () {
             let BuyAPolicy = this.speechBuilder()
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Applause2.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Applause2.mp3')
                 .addBreak('400ms').addT('congratsOnMerc')
                 .addBreak('400ms').addT('hasPreinstalledTelematics')
                 .addBreak('400ms').addT('shallIGetTheQuote')
 
             this.followUpState('ProfileDescription')
-                .showImageCard(this.t('cardTitle'), this.t('congrats'), 'https://s3-eu-west-1.amazonaws.com/insurance-buddy/CardImages/Congrats.jpg')
+                .showImageCard(this.t('cardTitle'), this.t('congrats'), 'https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Congrats.jpg')
                 .ask(BuyAPolicy, this.t('boolReprompt'));
         },
         'NoIntent': function () {
@@ -27,7 +27,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);
@@ -48,7 +48,7 @@ module.exports = {
                 .addBreak('400ms').addT('canWefetchDetails')
 
             this.followUpState('HealthReport')
-                .showImageCard(this.t('cardTitle'), this.t('canWefetchDetails'), 'https://s3-eu-west-1.amazonaws.com/insurance-buddy/CardImages/FetchingDetails.jpg')
+                .showImageCard(this.t('cardTitle'), this.t('canWefetchDetails'), 'https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/FetchingDetails.jpg')
                 .ask(ProfileDescription, this.t('boolReprompt'));
         },
         'NoIntent': function () {
@@ -64,7 +64,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);
@@ -80,14 +80,14 @@ module.exports = {
         'YesIntent': function () {
             let HealthReport = this.speechBuilder()
                 .addBreak('400ms').addT('FetchingYourDetails')
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Process1.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Process1.mp3')
                 .addBreak('400ms').addT('healthReport')
                 .addBreak('400ms').addT('drivingReport')
                 .addBreak('400ms').addT('proceedToGetQuote')
                 .addBreak('400ms').addT('canWeProceed')
 
             this.followUpState('InitialPremiumAndOfferOne')
-                .showImageCard(this.t('cardTitle'), this.t('reportDetails'), 'https://s3-eu-west-1.amazonaws.com/insurance-buddy/CardImages/HealthReport.jpg')
+                .showImageCard(this.t('cardTitle'), this.t('reportDetails'), 'https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/HealthReport.jpg')
                 .ask(HealthReport, this.t('boolReprompt'));
         },
         'NoIntent': function () {
@@ -105,7 +105,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);
@@ -120,7 +120,7 @@ module.exports = {
     'InitialPremiumAndOfferOne': {
         'YesIntent': function () {
             let InitialPremiumAndOfferOne = this.speechBuilder()
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Process1.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Process1.mp3')
                 .addBreak('400ms').addT('quoteReady')
                 .addBreak('400ms').addT('basePremiumIs')
                 .addBreak('400ms').addT(myPremium)
@@ -144,7 +144,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);
@@ -179,7 +179,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);
@@ -196,7 +196,7 @@ module.exports = {
             myPremium = myPremium + 90
 
             let FinalPremium = this.speechBuilder()
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Process1.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Process1.mp3')
                 .addBreak('400ms').addT('finalPremium')
                 .addBreak('400ms').addT(myPremium)
                 .addBreak('400ms').addT('dollars')
@@ -211,7 +211,7 @@ module.exports = {
         'NoIntent': function () {
 
             let FinalPremium = this.speechBuilder()
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Process1.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Process1.mp3')
                 .addBreak('400ms').addT('finalPremium')
                 .addBreak('400ms').addT(myPremium)
                 .addBreak('400ms').addT('dollars')
@@ -229,7 +229,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);
@@ -266,7 +266,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);
@@ -302,7 +302,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);
@@ -318,16 +318,16 @@ module.exports = {
         'YesIntent': function () {
             let CongratsPolicy = this.speechBuilder()
                 .addBreak('400ms').addT('AuthenticatingFingerPrint')
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Process1.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Process1.mp3')
                 //.addBreak('1000ms')
                 .addBreak('400ms').addT('paymentSuccessful')
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Applause2.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Applause2.mp3')
 
                 .addBreak('400ms').addT('congratsOnPolicy')
                 .addBreak('400ms').addT('yourPolicyNumberIs')
                 .addSayAsCharacters('PL102312')
                 .addBreak('400ms').addT('physicalCopy')
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
 
 
 
@@ -348,7 +348,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://s3-eu-west-1.amazonaws.com/insurance-buddy/Intro.mp3')
+                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);
