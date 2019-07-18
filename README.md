@@ -1,20 +1,69 @@
-[![Jovo Framework](https://www.jovo.tech/img/github-logo.png)](https://www.jovo.tech)
+# Insurance Buddy
 
-<p align="center">Templates for the <a href="https://github.com/jovotech/jovo-framework-nodejs">Jovo Framework</a> ⭐️</p>
+## CHALLENGES / OPPORTUNITIES
 
-<p align="center">
-<a href="https://www.jovo.tech/framework/docs/"><strong>Documentation</strong></a> -
-<a href="https://github.com/jovotech/jovo-cli"><strong>CLI </strong></a> - <a href="https://github.com/jovotech/jovo-framework-nodejs/blob/master/CONTRIBUTING.md"><strong>Contributing</strong></a> - <a href="https://twitter.com/jovotech"><strong>Twitter</strong></a></p>
-<br/>
+- Auto Insurance Customers are Fed up with Traditional Insurance Solutions
 
-# Template: Hello World
+ - Delayed Services 
 
-Jovo Sample Voice App with a simple "Hello World!" + asking for the user's name. This is the default template for the `jovo new` command:
+ - Awful Customer Support
+
+
+## SOLUTION
+
+**Multi Platform:** Implemented using Alexa  SDK ( Alexa Skill ) and Google SDK (Google Action)
+
+**Multi Process:** Personalized Auto Insurance Conversations
+- Create a New Policy 
+- Create a Claim ( post accident)
+ -Fetch Policy details
+- Fetch Claim details
+
+**Multi Lingual:** Customer can converse in multiple languages 
+- English
+- Hindi 
+
+
+## Benefits 
+
+- Multi Platform : Works on amazon echo devices and google home devices (device having a google assistant )
+
+- Light weight : Installation not required just need one to enable skill or action 
+
+- Works on home devices and Mobile devices 
+
+- Multi Lingual : Flexible framework make adding a new language extremely simple
+
+
+
+### Installation
+It is a node application 
 
 ```sh
-$ jovo new <directory>
+# Install node (npm) dependencies
+$ npm install
 
-## Alternative
-$ jovo new <directory> --template helloworld
+# Builds the files for your alexa skill and google actions  ( optional:  Use this command post local changes )
+$ jovo build
+
+# Deploys this new  skill to your Alexa developers account @ https://developer.amazon.com/alexa/console/ask
+$ jovo deploy
+
+# Start the Server ( jovo web hoot url will appear on the console e.g. https://webhook.jovo.cloud/1fdd42ff-7057-4841-a4cf-1234567890)
+$ jovo run watch 
 ```
+Note : jovo deploy -  automatically deploys the to alexa developers account but google actions needs manual intervention [click me to know more](https://www.jovo.tech/tutorials/google-action-tutorial-nodejs)
+
+## Demo 
+Start talking to your Alexa echo or Traverse to your alexa developers account @ [alexa demo page]( 
+ 
+
+### Development
+
+Want to contribute? Great!
+
+### TODO'S
+
+ - Unit test cases 
+ - Data model 
 
