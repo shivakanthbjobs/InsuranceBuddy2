@@ -29,7 +29,7 @@ module.exports = {
         else  if(glbClaimNo=="") {
             var dbClaims = db.collection('Claim');
             console.log("fetchClaims :  dbClaims" + dbClaims)
-            var claimQuery = dbClaims.where('ClaimNo', '==', policyno.value)
+            var claimQuery = dbClaims.where('ClaimNumber', '==', policyno.value)
             console.log("fetchClaims :  claimQuery" + claimQuery + "policyno.value = " + policyno.value)
             claimQuery.get()
                 .then(Claim => {

@@ -13,7 +13,7 @@ module.exports = {
                 .addBreak('400ms').addT('pinPointingYourCar')
                 .addBreak('400ms').addT('InformedPoliceAndSendingDrone')
                 .addBreak('400ms').addT('PhotosSentHelpInvestigation')
-                .addAudio("https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Drone2.mp3")
+                // .addAudio("https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Drone2.mp3")
                 .addBreak('400ms').addT('DroneArrived')
                 .addBreak('400ms').addT('droneTakePictures')
                 .addBreak('400ms').addT('canWeTakePictures')
@@ -27,7 +27,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
+                // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);
@@ -57,7 +57,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
+                // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);
@@ -73,11 +73,11 @@ module.exports = {
         'YesIntent': function () {
 
             let droneArrived = this.speechBuilder()
-                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/CameraClick1.mp3')
-                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/CameraClick1.mp3')
-                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/CameraClick1.mp3')
+                // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/CameraClick1.mp3')
+                // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/CameraClick1.mp3')
+                // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/CameraClick1.mp3')
                 //.addBreak('400ms')
-                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Process1.mp3')
+                // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Process1.mp3')
                 //.addBreak('400ms')
                 .addBreak('400ms').addT('recievedPhotosFromDrone')
                 .addBreak('400ms').addT('assessedSituation')
@@ -105,7 +105,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
+                // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);
@@ -125,7 +125,7 @@ module.exports = {
                 .addBreak('400ms').addT('bookingaTowTruck')
                 .addBreak('400ms').addT('bookingUber')
                 .addBreak('400ms').addT('dontWorryAbouttheCar')
-                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/UberCar1.mp3')
+                // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/UberCar1.mp3')
                 .addBreak('400ms').addT('yourTowTruckArrived')
                 .addBreak('400ms').addT('dontForgetCarKeys')
                 .addBreak('400ms').addT('canWeProceed')
@@ -152,7 +152,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
+                // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);
@@ -168,7 +168,7 @@ module.exports = {
         'YesIntent': function () {
 
             let UberArrived = this.speechBuilder()
-                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/UberCar1.mp3')
+                // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/UberCar1.mp3')
                 .addBreak('400ms').addT('uberHasArrived')
                 .addBreak('400ms').addT('PleaseProceed')
                 //.addBreak('3000ms')
@@ -189,7 +189,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
+                // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);
@@ -209,7 +209,7 @@ module.exports = {
                 .addBreak('400ms').addT('keepPostedOnCar')
                 .addBreak('400ms').addT('keepPostedOnClaim')
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
-                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
+                // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
 
             this
                 .showImageCard(this.t('cardTitle'), this.t('BigThankYou'), 'https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/7+download.jpg')
@@ -231,7 +231,7 @@ module.exports = {
         },
         'CancelIntent': function () {
             let speech = this.speechBuilder()
-                .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
+                // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
                 //.addT(str)
                 .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
             this.tell(speech, speech);

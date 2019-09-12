@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "firebase-admin": "^6.0.0",
-    "jovo-cli": "^2.0.3",
+    "jovo-cli": "^2.2.12",
+    "jovo-db-firestore": "^2.2.12",
     "jovo-framework": "^1.4.19",
     "json-query": "^2.2.2",
     "nodemon": "^1.18.4",

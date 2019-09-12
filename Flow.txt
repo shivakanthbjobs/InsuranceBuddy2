@@ -47,37 +47,10 @@ Alexa : Authenticating your finger print <Short audio> The payment is successful
 
 
 FETCH POLICY DETAILS 
-====================
-Start Insurance Buddy
-Fetch policy details
-My policy number is 235
-Give me my policy Summary
-What is my premium amount
-how many premiums
-When is my policy expiring
-Where is my nearest branch
-Who is my Relationship Manager
-When is my next premium due
-When did I pay my last premium
---13579, 235 
-
-FETCH CLAIM DETAILS 
-====================
-Start Insurance Buddy
-Fetch claim details
-My claim number is 800
-what is my  claim status
-last comments on my claim
-where is my claim
-what is the claims loss date
-
-
-
-SUCCES FLOW 
-=========
+=====================
 start insurance buddy
 
-13579 Welcome to Insurance Buddy , I am your Personal  Insurance Assistant. I can fetch your policy details , Create a new Claim or Create a new Policy. What can I do for you today?
+Welcome to Insurance Buddy , I am your Personal  Insurance Assistant. I can fetch your policy details , Create a new Claim or Create a new Policy. What can I do for you today?
 
 fetch policy details
 
@@ -118,3 +91,30 @@ Your next premium due date is on 27th December 2019  with Amount of 2700 Dollars
 when did i pay my last premium
 
 Your last payment was on 27 May 2018  for an amount of 2700 dollars which was done via the internet banking facility Would yoou also like to know your premium amount?
+
+
+
+FETCH POLICY DETAILS 
+====================
+Start Insurance Buddy
+Fetch policy details
+My policy number is 235
+Give me my policy Summary
+What is my premium amount
+how many premiums
+When is my policy expiring
+Where is my nearest branch
+Who is my Relationship Manager
+When is my next premium due
+When did I pay my last premium
+--13579, 235 
+
+FETCH CLAIM DETAILS 
+====================
+Start Insurance Buddy
+Fetch claim details
+My claim number is 831
+what is my  claim status
+last comments on my claim
+where is my claim
+what is the claims loss date
