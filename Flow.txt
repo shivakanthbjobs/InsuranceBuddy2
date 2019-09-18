@@ -1,3 +1,4 @@
+==============
 CREATE A CLAIM 
 ==============
 
@@ -19,6 +20,7 @@ Alexa :<Short audio> An alternate car has arrived for your convenience Please pr
 User : Yes
 Alexa :We have raised a claim on your behalf and details have been sent to your email We will keep you posted on the status of your car As regards to claim Thank you from Insurance Buddy , take care <Short audio>
 
+==============
 CREATE A POLICY
 ===============
 User : start insurance buddy
@@ -45,7 +47,7 @@ Alexa : To authenticate your payment Please place your thumb on the phone and Sa
 User : yes
 Alexa : Authenticating your finger print <Short audio> The payment is successful<Short audio>Congratulations on your policy Your car insurance policy number is PL102312 Physical copy of your insurance policy documents will reach you within 5 - 7 working days
 
-
+====================
 FETCH POLICY DETAILS 
 =====================
 start insurance buddy
@@ -93,22 +95,7 @@ when did i pay my last premium
 Your last payment was on 27 May 2018  for an amount of 2700 dollars which was done via the internet banking facility Would yoou also like to know your premium amount?
 
 
-
-FETCH POLICY DETAILS 
 ====================
-Start Insurance Buddy
-Fetch policy details
-My policy number is 235
-Give me my policy Summary
-What is my premium amount
-how many premiums
-When is my policy expiring
-Where is my nearest branch
-Who is my Relationship Manager
-When is my next premium due
-When did I pay my last premium
---13579, 235 
-
 FETCH CLAIM DETAILS 
 ====================
 Start Insurance Buddy
