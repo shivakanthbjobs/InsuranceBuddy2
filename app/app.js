@@ -97,7 +97,7 @@ app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),re
         glbPolicyNo = null
         glbClaimNo = null
         let speech = this.speechBuilder()
-         //   // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
+          .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
 
             .addBreak('400ms').addT('welcomeMsg1')
             .addBreak('400ms').addT('welcomeMsg2')
@@ -121,7 +121,7 @@ app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),re
    
     'CancelIntent': function () {
         let speech = this.speechBuilder()
-            // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
+             .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
             //.addT(str)
             .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
 
@@ -132,7 +132,7 @@ app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),re
 
     'ThankYouIntent': function () {
         let speech = this.speechBuilder()
-            // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
+             .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
             //.addT(str)
             .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
 
@@ -156,7 +156,7 @@ app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),re
             
                 StartIntent = this.speechBuilder()
                 .addBreak('400ms').addT('getLocation')
-                // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Process1.mp3')
+                 .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Process1.mp3')
                 .addBreak('400ms').addT('accidentNotification')
                 .addBreak('400ms').addT('IsAnyoneInjured')
 
@@ -176,7 +176,7 @@ app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),re
                 let policyWelcomeMsg = this.speechBuilder()
                     .addBreak('400ms').addT('ok')
                     .addBreak('400ms').addT('InMercShowroom')
-                    // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Process1.mp3')
+                     .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Process1.mp3')
                     .addBreak('400ms').addT('DidYouBuyaCar')
 
                 this.followUpState('BuyAPolicy')
@@ -197,7 +197,7 @@ app.setHandler(require('./handlers/newPolicy'),require('./handlers/newClaim'),re
     },
     'CancelIntent': function () {
         let speech = this.speechBuilder()
-            // .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
+             .addAudio('https://insurance-buddy-2.s3.ap-south-1.amazonaws.com/Intro.mp3')
             //.addT(str)
             .addBreak('400ms').addT('ThankYouFromInsuranceBuddy')
         this.tell(speech, speech);
