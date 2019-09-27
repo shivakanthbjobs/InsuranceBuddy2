@@ -56,7 +56,7 @@ Welcome to Insurance Buddy , I am your Personal  Insurance Assistant. I can fetc
 
 fetch policy details
 
-13579 ok Please provide me your policy number
+ok Please provide me your policy number
 
 my policy number is 13579
 

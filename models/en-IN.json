@@ -103,12 +103,27 @@
 					{
 						"name": "AMAZON.YesIntent",
 						"samples": [
+							"Yup",
+							"yes please",
+							"ok",
+							"Okay",
+							"Ohh okay",
+							"Yeah",
+							"Yes Proceed",
+							"Yes please go ahead",
 							"Yes"
 						]
 					},
 					{
 						"name": "AMAZON.NoIntent",
 						"samples": [
+							"No Stop",
+							"No thats it",
+							"No that's it",
+							"No this is it",
+							"Dont proceed further",
+							"Nope",
+							"Don't proceed further",
 							"No"
 						]
 					},
